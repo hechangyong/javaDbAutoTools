@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataDictionary>
+    <dataSource dataSourceId="1" dataSourceZHName="测试源">
+        <db dbName="diudiu" dbZHName="丢丢">
+            <table id="user" tableZHName="用户表">
+                <field name="id" type="bigint" typeTag="number" precision="[20]" fieldZHName="主键ID" description=""/>
+                <field name="nickname" type="varchar" precision="[20]" fieldZHName="别名" description="别名"/>
+                <field name="name" type="varchar" precision="[20]" fieldZHName="姓名" description="姓名"/>
+                <field name="phone" type="varchar" precision="[20]" fieldZHName="电话号码" description=""/>
+                <field name="phone" type="varchar" precision="[20]" fieldZHName="电话号码" description=""/>
+                <field name="address" type="varchar" precision="[100]" fieldZHName="住址" description=""/>
+                <field name="status" type="varchar" precision="[10]" fieldZHName="认证状态:1-已认证，2-为认证" description=""/>
+                <field name="itime" type="date" precision="[yyyy-MM-dd HH:ss]" fieldZHName="" description="入库时间"/>
+                <field name="utime" type="date" precision="[yyyy-MM-dd HH:ss]" fieldZHName="" description="更新时间"/>
+            </table>
+        </db>
+
+    </dataSource>
+</dataDictionary>

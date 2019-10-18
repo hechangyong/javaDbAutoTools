@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataDictionary>
+  <dataSource dataSourceId="1" dataSourceZHName="stargate测试环境">
+    <db dbName="stargate" dbZHName="stargate">
+      <table id="t_bussiness_log" tableZHName="业务日志表" >
+        <field name="uuid" description="主键" fieldZHName="主键" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="创建人" fieldZHName="创建人" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="创建时间" fieldZHName="创建时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="修改人" fieldZHName="修改人" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="modificationTime" description="修改时间" fieldZHName="修改时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="organization" description="机构" fieldZHName="机构" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="type" description="出错类型" fieldZHName="出错类型" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="source" description="出错源码" fieldZHName="出错源码" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="description" description="错误描述" fieldZHName="错误描述" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="happenTime" description="事故时间" fieldZHName="事故时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="detail" description="错误详情" fieldZHName="错误详情" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="isManaged" description="是否已处理" fieldZHName="是否已处理" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_card_policy" tableZHName="保单身份证表">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="cardNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="channelCode" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="expiredDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="isActive" description="" fieldZHName="" type="BIT" typeTag="character" precision="[1]"/>
+        <field name="productCode" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="sku" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_channel" tableZHName="渠道表">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[25]"/>
+        <field name="name" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[20]"/>
+        <field name="accessKey" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="secretKey" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="content" description="" fieldZHName="" type="TEXT" typeTag="character" precision="[21845]"/>
+        <field name="code" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="type" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="parentChannel" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[20]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[20]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[20]"/>
+      </table>
+      <table id="t_claim" tableZHName="理赔表" referTables="t_policy"  >
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="accidentTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="claimNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="claimTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]" />
+        <field name="policyNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]" refer="t_policy.policyId"/>
+        <field name="productCode" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="statusCode" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_claim_index" tableZHName="理赔索引表"  referTables="t_policy">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="accidentTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="claimAmount" description="" fieldZHName="" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="claimNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="claimTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="claimant" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="paymentAmount" description="" fieldZHName="" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="policyNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="productCode" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="status" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="closeDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="t_claim_survey" tableZHName="理赔调查材料表" referTables="t_policy">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="assignTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="claimNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="description" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="endTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="memo" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="policyNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]" refer="t_policy.policyNumber"/>
+        <field name="statusCode" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="surveyer" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_claimregist_log" tableZHName="理赔日志表">
+        <field name="transactionNo" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="claimNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="makeDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="status" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_claimregist_log" tableZHName="t_claimregist_log">
+        <field name="transactionNo" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="claimNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="makeDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="status" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_code_table" tableZHName="t_code_table">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="code" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="name" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_core_docking" tableZHName="t_core_docking" referTables="t_policy">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="policyNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="type" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="sendCoreTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="coreReturnTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="coreReturnStatus" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_core_docking_mq_param" tableZHName="t_core_docking_mq_param" referTables="t_policy">
+        <field name="uuid" description="主键" fieldZHName="主键" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="type" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="policyNumber" description="保单号" fieldZHName="保单号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="param" description="发送参数" fieldZHName="发送参数" type="LONGTEXT" typeTag="character" precision="[536870911]"/>
+        <field name="status" description="发送状态" fieldZHName="发送状态" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="superId" description="重发的id" fieldZHName="重发的id" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="count" description="重发次数" fieldZHName="重发次数" type="INT" typeTag="number" precision="[11]"/>
+      </table>
+      <table id="t_core_docking_param" tableZHName="t_core_docking_param">
+        <field name="uuid" description="主键" fieldZHName="主键" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="type" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="policyNumbers" description="保单号" fieldZHName="保单号" type="LONGTEXT" typeTag="character" precision="[536870911]"/>
+        <field name="param" description="发送参数" fieldZHName="发送参数" type="LONGTEXT" typeTag="character" precision="[536870911]"/>
+        <field name="response" description="返回参数" fieldZHName="返回参数" type="LONGTEXT" typeTag="character" precision="[536870911]"/>
+        <field name="status" description="返回状态" fieldZHName="返回状态" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_customer" tableZHName="t_customer">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="code" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="idNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="idType" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="name" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_decision_table" tableZHName="t_decision_table">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="code" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="effectiveDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="expiredDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="name" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="status" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_endorsement" tableZHName="t_endorsement">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="applicationDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="applyType" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="code" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="effectiveDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="endorsementNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="issueDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="name" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="policyNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="productCode" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="sequence" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="statusCode" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="type" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="wording" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="premium" description="" fieldZHName="" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="applicationName" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="channelCode" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="cpsStatus" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[10]"/>
+      </table>
+      <table id="t_endorsementregist_log" tableZHName="t_endorsementregist_log">
+        <field name="transactionNo" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="endorsementNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="makeDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="status" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_factor" tableZHName="t_factor">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="category" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="code" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="dataType" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="name" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="validationExpress" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_image_size_config" tableZHName="t_image_size_config">
+        <field name="id" description="" fieldZHName="" type="BIGINT" typeTag="number" precision="[20]"/>
+        <field name="imgName" description="新图片名称" fieldZHName="新图片名称" type="VARCHAR" typeTag="character" precision="[254]"/>
+        <field name="w" description="新图片的宽" fieldZHName="新图片的宽" type="INT" typeTag="number" precision="[11]"/>
+        <field name="h" description="新图片的高" fieldZHName="新图片的高" type="INT" typeTag="number" precision="[11]"/>
+        <field name="category" description="为一套尺寸分组" fieldZHName="为一套尺寸分组" type="VARCHAR" typeTag="character" precision="[128]"/>
+        <field name="isdelete" description="" fieldZHName="" type="BIT" typeTag="character" precision="[1]"/>
+        <field name="utime" description="" fieldZHName="" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="itime" description="" fieldZHName="" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="t_nb_user" tableZHName="t_nb_user">
+        <field name="uuid" description="主键" fieldZHName="主键" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="创建人" fieldZHName="创建人" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="创建时间" fieldZHName="创建时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="修改人" fieldZHName="修改人" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="modificationTime" description="修改时间" fieldZHName="修改时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="organization" description="组织机构" fieldZHName="组织机构" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="userName" description="登录用户名，同手机号" fieldZHName="登录用户名，同手机号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="password" description="密码" fieldZHName="密码" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="name" description="实际用户名" fieldZHName="实际用户名" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="title" description="职级" fieldZHName="职级" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="entryDate" description="入职或者上岗日期" fieldZHName="入职或者上岗日期" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="salt" description="加密用的salt" fieldZHName="加密用的salt" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="status" description="用户状态" fieldZHName="用户状态" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="TYPE" description="类型" fieldZHName="类型" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_nb_user_checkin" tableZHName="t_nb_user_checkin">
+        <field name="uuid" description="主键" fieldZHName="主键" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="创建人" fieldZHName="创建人" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="创建时间" fieldZHName="创建时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="修改人" fieldZHName="修改人" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="modificationTime" description="修改时间" fieldZHName="修改时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="organization" description="组织机构" fieldZHName="组织机构" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="fromUser" description="邀请的业务员id" fieldZHName="邀请的业务员id" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="userName" description="用户姓名" fieldZHName="用户姓名" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="mobile" description="用户手机号" fieldZHName="用户手机号" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_newbiz_sendtocore_config" tableZHName="t_newbiz_sendtocore_config">
+        <field name="productcode" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[15]"/>
+        <field name="managecom" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[15]"/>
+        <field name="salechnl" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[10]"/>
+        <field name="selltype" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[10]"/>
+        <field name="agentcode" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[15]"/>
+        <field name="paymode" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[10]"/>
+        <field name="paylocation" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[10]"/>
+        <field name="payendyear" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="insuyear" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="agentname" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[128]"/>
+        <field name="agentgroup" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[128]"/>
+      </table>
+      <table id="t_newbizregist_log" tableZHName="t_newbizregist_log">
+        <field name="transactionNo" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="makeDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="policyNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="status" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_notice_config" tableZHName="t_notice_config">
+        <field name="uuid" description="主键" fieldZHName="主键" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="创建人" fieldZHName="创建人" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="创建时间" fieldZHName="创建时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="修改人" fieldZHName="修改人" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="modificationTime" description="修改时间" fieldZHName="修改时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="type" description="配置类型" fieldZHName="配置类型" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="mail" description="邮件接收人，多人以逗号分隔" fieldZHName="邮件接收人，多人以逗号分隔" type="VARCHAR" typeTag="character" precision="[512]"/>
+        <field name="phone" description="电话接收人，多人以逗号分隔" fieldZHName="电话接收人，多人以逗号分隔" type="VARCHAR" typeTag="character" precision="[512]"/>
+        <field name="system" description="所属系统，多个系统可能共用本表" fieldZHName="所属系统，多个系统可能共用本表" type="VARCHAR" typeTag="character" precision="[512]"/>
+        <field name="memo" description="描述" fieldZHName="描述" type="VARCHAR" typeTag="character" precision="[512]"/>
+      </table>
+      <table id="t_notice_of_loss" tableZHName="t_notice_of_loss">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="accidentCause" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="accidentDescription" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="accidentTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="noticeNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="noticeTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="policyNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_notice_of_loss_index" tableZHName="t_notice_of_loss_index">
+        <field name="uuid" description="主键" fieldZHName="主键" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="创建人" fieldZHName="创建人" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="创建时间" fieldZHName="创建时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="修改人" fieldZHName="修改人" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="modificationTime" description="修改时间" fieldZHName="修改时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="organization" description="机构" fieldZHName="机构" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="accidentCause" description="事故原因" fieldZHName="事故原因" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="accidentTime" description="事故时间" fieldZHName="事故时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="noticeNumber" description="案件号" fieldZHName="案件号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="noticeTime" description="报案时间" fieldZHName="报案时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="policyNumber" description="保单号" fieldZHName="保单号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="mobile" description="报案人手机号" fieldZHName="报案人手机号" type="VARCHAR" typeTag="character" precision="[25]"/>
+        <field name="noticeAntName" description="报案人" fieldZHName="报案人" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="noticeStatus" description="案件状态" fieldZHName="案件状态" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_numbering_seq" tableZHName="t_numbering_seq">
+        <field name="NUMBERING_TYPE" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="NUMBERING" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="SEQUENCE" description="" fieldZHName="" type="BIGINT" typeTag="number" precision="[20]"/>
+      </table>
+      <table id="t_ofinterface_log" tableZHName="t_ofinterface_log">
+        <field name="recordId" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="makeDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="policyNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="status" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_order" tableZHName="t_order">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="amount" description="" fieldZHName="" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="businessOrgan" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="channelCode" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="customerName" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="deliveryDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="orderNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="orderingTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="statusCode" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_organization" tableZHName="t_organization">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="abbName" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="code" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="contactPersonName" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="fax" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="mail" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="name" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="parentOrg" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="phone" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="registrationDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="registrationNo" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="valid" description="" fieldZHName="" type="BIT" typeTag="character" precision="[1]"/>
+      </table>
+      <table id="t_permission" tableZHName="t_permission">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="available" description="" fieldZHName="" type="BIT" typeTag="character" precision="[1]"/>
+        <field name="description" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="permission" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_policy" tableZHName="t_policy" referTables="t_policy_index">
+        <field name="uuid" description="主键" fieldZHName="主键" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="创建人" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="创建时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="修改时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="修改人" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="组织机构" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="businessOrgan" description="" fieldZHName="业务机构" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="businessSource" description="" fieldZHName="业务源" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="channelCode" description="" fieldZHName="渠道" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="内容" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="contractStatusCode" description="" fieldZHName="保单状态" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="effectiveDate" description="" fieldZHName="生效日期" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="expiredDate" description="" fieldZHName="过期日期" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="extReferenceNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="issueDate" description="" fieldZHName="承保日期" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="policyNumber" description="" fieldZHName="保单号" type="VARCHAR" typeTag="character" precision="[255]" refer="t_policy_index.policyNumber"/>
+        <field name="productCode" description="" fieldZHName="产品代码" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="productName" description="" fieldZHName="产品名称" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="proposalDate" description="" fieldZHName="投保日期" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="proposalNumber" description="" fieldZHName="投保号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="quotationDate" description="" fieldZHName="询价日期" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="quotationNumber" description="" fieldZHName="询价号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="terminalReasonCode" description="" fieldZHName="终止原因" type="VARCHAR" typeTag="character" precision="[255]"
+               valueOption="TERMINAL_BY_EXPIRED:到期终止|TERMINAL_BY_UNDERWRITING:审核失败|TERMINAL_BY_SIGN_BILL:签单失败|TERMINAL_BY_PAYMENT_FAILED:支付失败"/>
+      </table>
+      <table id="t_policy_account" tableZHName="t_policy_account">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[100]"/>
+        <field name="productCode" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[100]"/>
+        <field name="policyNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[100]"/>
+        <field name="holderName" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[100]"/>
+        <field name="idType" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[100]"/>
+        <field name="idNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[100]"/>
+        <field name="originalAmount" description="" fieldZHName="" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="balance" description="" fieldZHName="" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[100]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[100]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[100]"/>
+      </table>
+      <table id="t_policy_index" tableZHName="t_policy_index">
+        <field name="uuid" description="" fieldZHName="主键" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="创建人" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="创建时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="修改时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="修改人" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="组织机构" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="APP" description="" fieldZHName="实际支付保费" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="SGP" description="" fieldZHName="毛保费" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="SNP" description="" fieldZHName="净保费" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="limitAmount" description="" fieldZHName="保额上限" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="proposalDate" description="" fieldZHName="投保日期" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="issueDate" description="" fieldZHName="承保日期" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="channelCode" description="" fieldZHName="渠道" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="terminalDate" description="" fieldZHName="终止日期" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="terminalReasonCode" description="" fieldZHName="终止原因" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="businessOrgan" description="" fieldZHName="业务机构" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="businessSource" description="" fieldZHName="业务源" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="contractStatusCode" description="" fieldZHName="保单状态" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="effectiveDate" description="" fieldZHName="生效日期" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="expiredDate" description="" fieldZHName="过期日期" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="extReferenceNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="mobile" description="" fieldZHName="手机号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="policyHolderIdNumber" description="" fieldZHName="投保人ID" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="policyHolderIdType" description="" fieldZHName="投保人ID类型" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="policyHolderName" description="" fieldZHName="投保人" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="policyInsuredIdNumber" description="" fieldZHName="被保人ID" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="policyInsuredIdType" description="" fieldZHName="被保人ID类型" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="policyInsuredName" description="" fieldZHName="被保人" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="policyNumber" description="" fieldZHName="保单号" type="VARCHAR" typeTag="character" precision="[255]" refer="t_policy.policyNumber"/>
+        <field name="productCode" description="" fieldZHName="产品代码" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="productName" description="" fieldZHName="产品名称" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="proposalNumber" description="" fieldZHName="投保号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="quotationNumber" description="" fieldZHName="询价号" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_policy_log" tableZHName="t_policy_log">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="endoId" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="logType" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="policyNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_policy_materials" tableZHName="t_policy_materials">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="format" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="name" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="path" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="size" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_product" tableZHName="t_product">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="code" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="effectiveDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="expiredDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="name" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="status" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="version" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_quotation" tableZHName="t_quotation">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="businessOrgan" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="businessSource" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="channelCode" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="effectiveDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="expiredDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="extReferenceNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="productCode" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="productName" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="proposalDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="quotationDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="quotationNumber" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="quotationStatusCode" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="rejectReason" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_realtimepay_log" tableZHName="t_realtimepay_log">
+        <field name="serialNo" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="bizReferenceNo" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]" valueOption=""/>
+        <field name="bizType" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="cpsFlag" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="rXMLMessage" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="tXMLMessage" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="ylFlag" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_role" tableZHName="t_role">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="available" description="" fieldZHName="" type="BIT" typeTag="character" precision="[1]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="description" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="role" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_sku" tableZHName="t_sku">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="code" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="effectiveDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="expiredDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="name" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="status" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_sms_receipt_log" tableZHName="t_sms_receipt_log">
+        <field name="uuid" description="主键" fieldZHName="主键" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="receivePhone" description="接收短信的手机号码" fieldZHName="接收短信的手机号码" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="smsContent" description="短信内容" fieldZHName="短信内容" type="LONGTEXT" typeTag="character" precision="[536870911]"/>
+        <field name="policyNumber" description="保单号" fieldZHName="保单号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="sendTime" description="发送短信时间" fieldZHName="发送短信时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="status" description="发送状态 Y发送成功,N 发送失败" fieldZHName="发送状态 Y发送成功,N 发送失败" type="VARCHAR" typeTag="character" precision="[1]"/>
+      </table>
+      <table id="t_user" tableZHName="t_user">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="" fieldZHName="" type="LONGTEXT" typeTag="character" precision="[715827882]"/>
+        <field name="email" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="mobilePhone" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="nickName" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="password" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="salt" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="status" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="userName" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="locked" description="" fieldZHName="" type="BIT" typeTag="character" precision="[1]"/>
+        <field name="valid" description="" fieldZHName="" type="BIT" typeTag="character" precision="[1]"/>
+        <field name="TYPE" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_user_authentication" tableZHName="t_user_authentication">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="expiredDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="token" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="userName" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="t_user_oauth" tableZHName="t_user_oauth">
+        <field name="uuid" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createdBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="creationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modificationTime" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="modifiedBy" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="organization" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="expiredDate" description="" fieldZHName="" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="oauthId" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="oauthName" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="oauthToken" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="userName" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+      </table>
+      <table id="test_timeout" tableZHName="test_timeout">
+        <field name="a" description="" fieldZHName="" type="CHAR" typeTag="character" precision="[1]"/>
+      </table>
+    </db>
+  </dataSource>
+</dataDictionary>

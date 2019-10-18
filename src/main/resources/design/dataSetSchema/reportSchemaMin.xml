@@ -1,0 +1,21 @@
+<report dataSourceId="1" dbName="stargatetest" name="studentTotalGrade" ZHName="报表" pageSize="100">
+    <input>
+
+    </input>
+
+    <query table="t_policy" joinType="left"
+           joinCondition="" orderby=""
+           groupby=""><!-- 限定两张表，多张表join，分多个query -->
+        <condition>
+            <and>
+                <factor refparam="paramid"/>
+                <factor refparam="paramid"/>
+            </and>
+        </condition>
+    </query>
+
+    <resultView>
+        <field name="t_policy.id" caption=""/>
+        <field name="t_policy.name" caption=""/>
+    </resultView>
+</report>

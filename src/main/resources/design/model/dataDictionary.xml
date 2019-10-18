@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataDictionary>
+    <dataSource dataSourceId="1" dataSourceZHName="测试源">
+        <db dbName="diudiu" dbZHName="丢丢">
+            <table id="user" tableZHName="用户表">
+                <field name="id" type="bigint" typeTag="number" precision="[20]" fieldZHName="主键ID" description=""/>
+                <field name="nickname" type="varchar" precision="[20]" fieldZHName="别名" description="别名"/>
+                <field name="name" type="varchar" precision="[20]" fieldZHName="姓名" description="姓名"/>
+                <field name="phone" type="varchar" precision="[20]" fieldZHName="电话号码" description=""/>
+                <field name="phone" type="varchar" precision="[20]" fieldZHName="电话号码" description=""/>
+                <field name="address" type="varchar" precision="[100]" fieldZHName="住址" description=""/>
+                <field name="status" type="varchar" precision="[10]" fieldZHName="认证状态:1-已认证，2-为认证" description=""/>
+                <field name="itime" type="date" precision="[yyyy-MM-dd HH:ss]" fieldZHName="" description="入库时间"/>
+                <field name="utime" type="date" precision="[yyyy-MM-dd HH:ss]" fieldZHName="" description="更新时间"/>
+            </table>
+            <table id="accounts" tableZHName="用户账户表">
+                <field name="id" type="bigint" typeTag="number" precision="[20]" fieldZHName="主键ID" description=""/>
+                <field name="userid" type="bigint"  precision="[20]" fieldZHName="用户id" description="" refer="user.id"/>
+                <field name="balance" type="bigdecimal"  precision="[20]" fieldZHName="账户 余额" description="" />
+                <field name="douNumber" type="bigdecimal"  precision="[20]" fieldZHName="丢丢豆账户余额" description="" />
+                <field name="itime" type="date" precision="[yyyy-MM-dd HH:ss]" fieldZHName="" description="入库时间"/>
+                <field name="utime" type="date" precision="[yyyy-MM-dd HH:ss]" fieldZHName="" description="更新时间"/>
+            </table>
+            <table id="accountChangeRecord" tableZHName="账户变更记录表">
+                <field name="id" type="bigint" typeTag="number" precision="[20]" fieldZHName="主键ID" description=""/>
+                <field name="userid" type="bigint"  precision="[20]" fieldZHName="用户id" description="" refer="user.id"/>
+                <field name="type" type="int"  precision="[2]" fieldZHName="变更类型：1-充值 2-提现 3-消费 4-平台赠送" description="" />
+                <field name="amount" type="bigdecimal"  precision="[20,2]" fieldZHName="金额" description="" />
+                <field name="number" type="bigdecimal"  precision="[20,2]" fieldZHName="丢丢豆数目" description="" />
+                <field name="itime" type="date" precision="[yyyy-MM-dd HH:ss]" fieldZHName="" description="入库时间"/>
+                <field name="utime" type="date" precision="[yyyy-MM-dd HH:ss]" fieldZHName="" description="更新时间"/>
+            </table>
+        </db>
+
+    </dataSource>
+</dataDictionary>

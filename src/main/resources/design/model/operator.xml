@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operator>
+    <dataType id="number" tag="number">
+        <opFactor id="equivalent" name="等于" sqlOp="={}"/>
+        <opFactor id="unequal" name="不等于" sqlOp="&lt;&gt;{}"/>
+        <opFactor id="isNull" name="为空" sqlOp="is null"/>
+        <opFactor id="isNotNull" name="不为空" sqlOp="is not null"/>
+        <opFactor id="smallThan" name="小于" sqlOp="&lt;{}"/>
+        <opFactor id="largerThan" name="大于" sqlOp="&gt;{}"/>
+        <opFactor id="smallAndEqual" name="小于等于" sqlOp="&lt;={}"/>
+        <opFactor id="largerAndEqual" name="大于等于" sqlOp="&gt;={}"/>
+    </dataType>
+    <dataType id="character" tag="character">
+        <opFactor id="equivalent" name="等于" sqlOp="='{}'"/>
+        <opFactor id="unequal" name="不等于" sqlOp="&lt;&gt;'{}'"/>
+        <opFactor id="isNull" name="为空" sqlOp="is null"/>
+        <opFactor id="isNotNull" name="不为空" sqlOp="is not null"/>
+        <opFactor id="contain" name="包含" sqlOp="like '%{}%'"/>
+        <opFactor id="exclusive" name="不包含" sqlOp="not like '%{}%'"/>
+        <opFactor id="startWith" name="以..开始" sqlOp="like '{}%'"/>
+        <opFactor id="endWith" name="以..结束" sqlOp="like '%{}'"/>
+    </dataType>
+    <dataType id="date" tag="date">
+        <opFactor id="equivalent" name="等于" sqlOp="='{}'"/>
+        <opFactor id="unequal" name="不等于" sqlOp="&lt;&gt;'{}'"/>
+        <opFactor id="isNull" name="为空" sqlOp="is null"/>
+        <opFactor id="isNotNull" name="不为空" sqlOp="is not null"/>
+        <opFactor id="before" name="早于" sqlOp="&gt;'{}'"/>
+        <opFactor id="after" name="晚于" sqlOp="&lt;'{}'"/>
+    </dataType>
+</operator>

@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataDictionary>
+  <dataSource dataSourceId="2" dataSourceZHName="青云测试环境">
+    <db dbName="msyx_tools" dbZHName="民生优选">
+      <table id="activity" tableZHName="活动">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="title" description="标题" fieldZHName="标题" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="description" description="描述" fieldZHName="描述" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="cardId" description="卡片id" fieldZHName="卡片id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="guaranteeId" description="保障id" fieldZHName="保障id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="expiryTime" description="到期时间" fieldZHName="到期时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="totalCount" description="活动总数" fieldZHName="活动总数" type="INT" typeTag="number" precision="[11]"/>
+        <field name="status" description="状态,0无效,1有效" fieldZHName="状态,0无效,1有效" type="INT" typeTag="number" precision="[5]"/>
+        <field name="consumeCount" description="已消费数量" fieldZHName="已消费数量" type="INT" typeTag="number" precision="[11]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="pid" description="赠险平台活动id" fieldZHName="赠险平台活动id" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="projectProductId" description="赠险平台活动产品id" fieldZHName="赠险平台活动产品id" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="isAgentActive" description="代理人是否可以激活，1可以，0不可以" fieldZHName="代理人是否可以激活，1可以，0不可以" type="TINYINT" typeTag="number" precision="[2]"/>
+      </table>
+      <table id="activity_order" tableZHName="活动订单">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="activityId" description="活动id" fieldZHName="活动id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="customerId" description="客户id" fieldZHName="客户id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="orderId" description="订单id" fieldZHName="订单id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="activeCode" description="激活码" fieldZHName="激活码" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="card" tableZHName="卡">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="coverPicture" description="卡封面" fieldZHName="卡封面" type="VARCHAR" typeTag="character" precision="[500]"/>
+        <field name="title" description="卡标题" fieldZHName="卡标题" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="typeId" description="类型id" fieldZHName="类型id" type="INT" typeTag="number" precision="[10]"/>
+        <field name="showOrder" description="显示顺序" fieldZHName="显示顺序" type="INT" typeTag="number" precision="[10]"/>
+        <field name="status" description="状态 0下线,1上线" fieldZHName="状态 0下线,1上线" type="INT" typeTag="number" precision="[5]"/>
+        <field name="hotSell" description="是否热推,0否,1是" fieldZHName="是否热推,0否,1是" type="INT" typeTag="number" precision="[5]"/>
+        <field name="description" description="卡片描述,寄语" fieldZHName="卡片描述,寄语" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="displayFlg" description="是否显示 1显示 0不显示" fieldZHName="是否显示 1显示 0不显示" type="TINYINT" typeTag="number" precision="[4]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="card_order" tableZHName="卡订单">
+        <field name="id" description="" fieldZHName="" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="sourceType" description="来源类型，1活动，2购买" fieldZHName="来源类型，1活动，2购买" type="TINYINT" typeTag="number" precision="[2]"/>
+        <field name="productCode" description="产品代码" fieldZHName="产品代码" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="cardId" description="卡ID" fieldZHName="卡ID" type="INT" typeTag="number" precision="[11]"/>
+        <field name="guaranteeId" description="保障id" fieldZHName="保障id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="guaranteePeriod" description="保障期限" fieldZHName="保障期限" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="guaranteeCost" description="保障价格" fieldZHName="保障价格" type="DECIMAL" typeTag="number" precision="[10]"/>
+        <field name="guaranteeAmount" description="保障保额" fieldZHName="保障保额" type="DECIMAL" typeTag="number" precision="[10]"/>
+        <field name="status" description="订单状态" fieldZHName="订单状态" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="effectiveDate" description="生效日期" fieldZHName="生效日期" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="expiredDate" description="失效时间" fieldZHName="失效时间" type="DATE" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="activeUserId" description="激活人ID" fieldZHName="激活人ID" type="INT" typeTag="number" precision="[11]"/>
+        <field name="activeTime" description="激活时间" fieldZHName="激活时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="proposalNumber" description="投保单号" fieldZHName="投保单号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="policyNum" description="激活后保单编号" fieldZHName="激活后保单编号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="card_pay_log" tableZHName="卡支付LOG">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="payOrderId" description="支付订单号" fieldZHName="支付订单号" type="INT" typeTag="number" precision="[11]"/>
+        <field name="type" description="类型 1微信支付，2微信支付通知" fieldZHName="类型 1微信支付，2微信支付通知" type="TINYINT" typeTag="number" precision="[2]"/>
+        <field name="request" description="请求内容" fieldZHName="请求内容" type="LONGTEXT" typeTag="character" precision="[536870911]"/>
+        <field name="response" description="响应内容" fieldZHName="响应内容" type="LONGTEXT" typeTag="character" precision="[536870911]"/>
+        <field name="createTime" description="" fieldZHName="" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="card_pay_order" tableZHName="卡支付订单">
+        <field name="id" description="" fieldZHName="" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="userId" description="用户ID" fieldZHName="用户ID" type="INT" typeTag="number" precision="[11]"/>
+        <field name="cardId" description="卡ID" fieldZHName="卡ID" type="INT" typeTag="number" precision="[11]"/>
+        <field name="guaranteeId" description="保障id" fieldZHName="保障id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="tradeNum" description="商户交易订单号,用于微信支付" fieldZHName="商户交易订单号,用于微信支付" type="VARCHAR" typeTag="character" precision="[32]"/>
+        <field name="formId" description="formId" fieldZHName="formId" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="payAmount" description="支付金额" fieldZHName="支付金额" type="DECIMAL" typeTag="number" precision="[10]"/>
+        <field name="status" description="状态  1待支付，2支付中，3支付成功，4支付失败" fieldZHName="状态  1待支付，2支付中，3支付成功，4支付失败" type="TINYINT" typeTag="number" precision="[2]"/>
+        <field name="orderId" description="订单ID" fieldZHName="订单ID" type="INT" typeTag="number" precision="[11]"/>
+        <field name="transactionId" description="微信支付订单号" fieldZHName="微信支付订单号" type="VARCHAR" typeTag="character" precision="[32]"/>
+        <field name="payTime" description="支付时间" fieldZHName="支付时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="coreStatus" description="核心系统状态" fieldZHName="核心系统状态" type="VARCHAR" typeTag="character" precision="[20]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="card_type" tableZHName="卡类型">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="description" description="描述" fieldZHName="描述" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="status" description="状态" fieldZHName="状态" type="INT" typeTag="number" precision="[5]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="customer_info" tableZHName="客户信息">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="openId" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="type" description="用户类型，1：普通用户，2代理用户" fieldZHName="用户类型，1：普通用户，2代理用户" type="TINYINT" typeTag="number" precision="[2]"/>
+        <field name="name" description="客户姓名" fieldZHName="客户姓名" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="mobile" description="手机号" fieldZHName="手机号" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="email" description="邮箱" fieldZHName="邮箱" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="residentArea" description="常住地" fieldZHName="常住地" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="agentName" description="用户姓名" fieldZHName="用户姓名" type="VARCHAR" typeTag="character" precision="[100]"/>
+        <field name="agentJobNumber" description="工号" fieldZHName="工号" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="status" description="用户状态 1有效，0无效" fieldZHName="用户状态 1有效，0无效" type="TINYINT" typeTag="number" precision="[2]"/>
+        <field name="lookTime" description="查看时间" fieldZHName="查看时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="sendActiveTime" description="发送激活卡时间" fieldZHName="发送激活卡时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="customer_wechat" tableZHName="客户微信">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="customerId" description="客户id" fieldZHName="客户id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="openId" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="unionId" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="nickName" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="avatarUrl" description="头像" fieldZHName="头像" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="gender" description="用户的性别，值为1时是男性，值为2时是女性，值为0时是未知" fieldZHName="用户的性别，值为1时是男性，值为2时是女性，值为0时是未知" type="CHAR" typeTag="character" precision="[1]"/>
+        <field name="city" description="城市" fieldZHName="城市" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="province" description="省份" fieldZHName="省份" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="country" description="国家" fieldZHName="国家" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="language" description="语言" fieldZHName="语言" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="guarantee" tableZHName="保障产品">
+        <field name="id" description="" fieldZHName="" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="productCode" description="产品代码" fieldZHName="产品代码" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="status" description="状态 0下线,1上线" fieldZHName="状态 0下线,1上线" type="INT" typeTag="number" precision="[5]"/>
+        <field name="period" description="保障期限" fieldZHName="保障期限" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="title" description="保障标题" fieldZHName="保障标题" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="description" description="保障描述" fieldZHName="保障描述" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="replenishDesc" description="保障补充显示信息" fieldZHName="保障补充显示信息" type="TEXT" typeTag="character" precision="[21845]"/>
+        <field name="showOrder" description="展示顺序" fieldZHName="展示顺序" type="INT" typeTag="number" precision="[10]"/>
+        <field name="productName" description="产品名称" fieldZHName="产品名称" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="premium" description="保费" fieldZHName="保费" type="DECIMAL" typeTag="number" precision="[20]"/>
+        <field name="totalLimitAmount" description="总保额" fieldZHName="总保额" type="DECIMAL" typeTag="number" precision="[20]"/>
+        <field name="displayFlg" description="是否显示 1显示 0不显示" fieldZHName="是否显示 1显示 0不显示" type="TINYINT" typeTag="number" precision="[4]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="guarantee_coverage" tableZHName="保障责任">
+        <field name="id" description="主键id" fieldZHName="主键id" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="guaranteeId" description="保障id" fieldZHName="保障id" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="productCode" description="产品编号" fieldZHName="产品编号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="coverageCode" description="责任编号" fieldZHName="责任编号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="coverageName" description="责任名称" fieldZHName="责任名称" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="premium" description="责任保费" fieldZHName="责任保费" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="claimType" description="理赔类型" fieldZHName="理赔类型" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="maxClaimAmount" description="最大理赔限额(保额)" fieldZHName="最大理赔限额(保额)" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="coverageDescription" description="责任描述" fieldZHName="责任描述" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="claimRatio" description="赔付比例" fieldZHName="赔付比例" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="deductible" description="免赔额" fieldZHName="免赔额" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="guarantee_pricingparam" tableZHName="保障计价参数">
+        <field name="id" description="" fieldZHName="" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="guaranteeId" description="保障id" fieldZHName="保障id" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="parameterName" description="阐述名称" fieldZHName="阐述名称" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="parameterDescription" description="参数描述" fieldZHName="参数描述" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="parameterType" description="参数类型" fieldZHName="参数类型" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="value" description="参数值" fieldZHName="参数值" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="quotationMapProposal" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="order_customer" tableZHName="订单客户">
+        <field name="id" description="" fieldZHName="" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="type" description="类型(投保人:HOLDER,被保人:INSURED)" fieldZHName="类型(投保人:HOLDER,被保人:INSURED)" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="orderId" description="订单id" fieldZHName="订单id" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="customerName" description="客户名称" fieldZHName="客户名称" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="idNumber" description="身份证" fieldZHName="身份证" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="mobile" description="电话" fieldZHName="电话" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="relationWithHolder" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="parameters" description="客户参数" fieldZHName="客户参数" type="LONGTEXT" typeTag="character" precision="[536870911]"/>
+        <field name="status" description="和订单关联是否有效(1:有效,0:无效)" fieldZHName="和订单关联是否有效(1:有效,0:无效)" type="INT" typeTag="number" precision="[1]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="order_log" tableZHName="订单LOG">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="orderId" description="订单id" fieldZHName="订单id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="type" description="类型" fieldZHName="类型" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="日志内容" fieldZHName="日志内容" type="LONGTEXT" typeTag="character" precision="[536870911]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="order_user" tableZHName="订单用户">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="orderId" description="订单id" fieldZHName="订单id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="sourceType" description="来源类型，1活动，2购买，3接收" fieldZHName="来源类型，1活动，2购买，3接收" type="TINYINT" typeTag="number" precision="[2]"/>
+        <field name="fromUserId" description="赠送用户id" fieldZHName="赠送用户id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="userId" description="当前用户id" fieldZHName="当前用户id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="toUserId" description="接收用户id" fieldZHName="接收用户id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="fromMsg" description="fromUser的消息" fieldZHName="fromUser的消息" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="toMsg" description="toMsg的消息" fieldZHName="toMsg的消息" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="status" description="状态，1已接收，2赠送中，3已赠送，4已退回，5已激活，6已失效" fieldZHName="状态，1已接收，2赠送中，3已赠送，4已退回，5已激活，6已失效" type="INT" typeTag="number" precision="[5]"/>
+        <field name="sendTime" description="赠送时间" fieldZHName="赠送时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="user" tableZHName="用户">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="account" description="用户帐号" fieldZHName="用户帐号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="password" description="密码" fieldZHName="密码" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="type" description="用户类型" fieldZHName="用户类型" type="INT" typeTag="number" precision="[11]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+    </db>
+    <db dbName="newyearactivity" dbZHName="元旦活动">
+      <table id="activity" tableZHName="活动">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="title" description="标题" fieldZHName="标题" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="description" description="描述" fieldZHName="描述" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="cardId" description="卡片id" fieldZHName="卡片id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="guaranteeId" description="保障id" fieldZHName="保障id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="expiryTime" description="到期时间" fieldZHName="到期时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="totalCount" description="活动总数" fieldZHName="活动总数" type="INT" typeTag="number" precision="[11]"/>
+        <field name="status" description="状态,0无效,1有效" fieldZHName="状态,0无效,1有效" type="INT" typeTag="number" precision="[5]"/>
+        <field name="consumeCount" description="已消费数量" fieldZHName="已消费数量" type="INT" typeTag="number" precision="[11]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="pid" description="赠险平台活动id" fieldZHName="赠险平台活动id" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="projectProductId" description="赠险平台活动产品id" fieldZHName="赠险平台活动产品id" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="isAgentActive" description="代理人是否可以激活，1可以，0不可以" fieldZHName="代理人是否可以激活，1可以，0不可以" type="TINYINT" typeTag="number" precision="[2]"/>
+      </table>
+      <table id="activity_order" tableZHName="活动订单">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="activityId" description="活动id" fieldZHName="活动id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="customerId" description="客户id" fieldZHName="客户id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="orderId" description="订单id" fieldZHName="订单id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="activeCode" description="激活码" fieldZHName="激活码" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="card" tableZHName="卡">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="coverPicture" description="卡封面" fieldZHName="卡封面" type="VARCHAR" typeTag="character" precision="[500]"/>
+        <field name="title" description="卡标题" fieldZHName="卡标题" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="typeId" description="类型id" fieldZHName="类型id" type="INT" typeTag="number" precision="[10]"/>
+        <field name="showOrder" description="显示顺序" fieldZHName="显示顺序" type="INT" typeTag="number" precision="[10]"/>
+        <field name="status" description="状态 0下线,1上线" fieldZHName="状态 0下线,1上线" type="INT" typeTag="number" precision="[5]"/>
+        <field name="hotSell" description="是否热推,0否,1是" fieldZHName="是否热推,0否,1是" type="INT" typeTag="number" precision="[5]"/>
+        <field name="description" description="卡片描述,寄语" fieldZHName="卡片描述,寄语" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="displayFlg" description="是否显示 1显示 0不显示" fieldZHName="是否显示 1显示 0不显示" type="TINYINT" typeTag="number" precision="[4]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="card_order" tableZHName="卡订单">
+        <field name="id" description="" fieldZHName="" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="sourceType" description="来源类型，1活动，2购买" fieldZHName="来源类型，1活动，2购买" type="TINYINT" typeTag="number" precision="[2]"/>
+        <field name="productCode" description="产品代码" fieldZHName="产品代码" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="cardId" description="卡ID" fieldZHName="卡ID" type="INT" typeTag="number" precision="[11]"/>
+        <field name="guaranteeId" description="保障id" fieldZHName="保障id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="guaranteePeriod" description="保障期限" fieldZHName="保障期限" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="guaranteeCost" description="保障价格" fieldZHName="保障价格" type="DECIMAL" typeTag="number" precision="[10]"/>
+        <field name="guaranteeAmount" description="保障保额" fieldZHName="保障保额" type="DECIMAL" typeTag="number" precision="[10]"/>
+        <field name="status" description="订单状态" fieldZHName="订单状态" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="effectiveDate" description="生效日期" fieldZHName="生效日期" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="expiredDate" description="失效时间" fieldZHName="失效时间" type="DATE" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="activeUserId" description="激活人ID" fieldZHName="激活人ID" type="INT" typeTag="number" precision="[11]"/>
+        <field name="activeTime" description="激活时间" fieldZHName="激活时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="proposalNumber" description="投保单号" fieldZHName="投保单号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="policyNum" description="激活后保单编号" fieldZHName="激活后保单编号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="card_pay_log" tableZHName="卡支付LOG">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="payOrderId" description="支付订单号" fieldZHName="支付订单号" type="INT" typeTag="number" precision="[11]"/>
+        <field name="type" description="类型 1微信支付，2微信支付通知" fieldZHName="类型 1微信支付，2微信支付通知" type="TINYINT" typeTag="number" precision="[2]"/>
+        <field name="request" description="请求内容" fieldZHName="请求内容" type="LONGTEXT" typeTag="character" precision="[536870911]"/>
+        <field name="response" description="响应内容" fieldZHName="响应内容" type="LONGTEXT" typeTag="character" precision="[536870911]"/>
+        <field name="createTime" description="" fieldZHName="" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="card_pay_order" tableZHName="卡支付订单">
+        <field name="id" description="" fieldZHName="" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="userId" description="用户ID" fieldZHName="用户ID" type="INT" typeTag="number" precision="[11]"/>
+        <field name="cardId" description="卡ID" fieldZHName="卡ID" type="INT" typeTag="number" precision="[11]"/>
+        <field name="guaranteeId" description="保障id" fieldZHName="保障id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="tradeNum" description="商户交易订单号,用于微信支付" fieldZHName="商户交易订单号,用于微信支付" type="VARCHAR" typeTag="character" precision="[32]"/>
+        <field name="formId" description="formId" fieldZHName="formId" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="payAmount" description="支付金额" fieldZHName="支付金额" type="DECIMAL" typeTag="number" precision="[10]"/>
+        <field name="status" description="状态  1待支付，2支付中，3支付成功，4支付失败" fieldZHName="状态  1待支付，2支付中，3支付成功，4支付失败" type="TINYINT" typeTag="number" precision="[2]"/>
+        <field name="orderId" description="订单ID" fieldZHName="订单ID" type="INT" typeTag="number" precision="[11]"/>
+        <field name="transactionId" description="微信支付订单号" fieldZHName="微信支付订单号" type="VARCHAR" typeTag="character" precision="[32]"/>
+        <field name="payTime" description="支付时间" fieldZHName="支付时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="coreStatus" description="核心系统状态" fieldZHName="核心系统状态" type="VARCHAR" typeTag="character" precision="[20]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="card_type" tableZHName="卡类型">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="description" description="描述" fieldZHName="描述" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="status" description="状态" fieldZHName="状态" type="INT" typeTag="number" precision="[5]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="customer_info" tableZHName="客户信息">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="openId" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="type" description="用户类型，1：普通用户，2代理用户" fieldZHName="用户类型，1：普通用户，2代理用户" type="TINYINT" typeTag="number" precision="[2]"/>
+        <field name="name" description="客户姓名" fieldZHName="客户姓名" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="mobile" description="手机号" fieldZHName="手机号" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="email" description="邮箱" fieldZHName="邮箱" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="residentArea" description="常住地" fieldZHName="常住地" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="agentName" description="用户姓名" fieldZHName="用户姓名" type="VARCHAR" typeTag="character" precision="[100]"/>
+        <field name="agentJobNumber" description="工号" fieldZHName="工号" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="status" description="用户状态 1有效，0无效" fieldZHName="用户状态 1有效，0无效" type="TINYINT" typeTag="number" precision="[2]"/>
+        <field name="lookTime" description="查看时间" fieldZHName="查看时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="sendActiveTime" description="发送激活卡时间" fieldZHName="发送激活卡时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="customer_wechat" tableZHName="客户微信">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="customerId" description="客户id" fieldZHName="客户id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="openId" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="unionId" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="nickName" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="avatarUrl" description="头像" fieldZHName="头像" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="gender" description="用户的性别，值为1时是男性，值为2时是女性，值为0时是未知" fieldZHName="用户的性别，值为1时是男性，值为2时是女性，值为0时是未知" type="CHAR" typeTag="character" precision="[1]"/>
+        <field name="city" description="城市" fieldZHName="城市" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="province" description="省份" fieldZHName="省份" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="country" description="国家" fieldZHName="国家" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="language" description="语言" fieldZHName="语言" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="guarantee" tableZHName="保障产品">
+        <field name="id" description="" fieldZHName="" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="productCode" description="产品代码" fieldZHName="产品代码" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="status" description="状态 0下线,1上线" fieldZHName="状态 0下线,1上线" type="INT" typeTag="number" precision="[5]"/>
+        <field name="period" description="保障期限" fieldZHName="保障期限" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="title" description="保障标题" fieldZHName="保障标题" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="description" description="保障描述" fieldZHName="保障描述" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="replenishDesc" description="保障补充显示信息" fieldZHName="保障补充显示信息" type="TEXT" typeTag="character" precision="[21845]"/>
+        <field name="showOrder" description="展示顺序" fieldZHName="展示顺序" type="INT" typeTag="number" precision="[10]"/>
+        <field name="productName" description="产品名称" fieldZHName="产品名称" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="premium" description="保费" fieldZHName="保费" type="DECIMAL" typeTag="number" precision="[20]"/>
+        <field name="totalLimitAmount" description="总保额" fieldZHName="总保额" type="DECIMAL" typeTag="number" precision="[20]"/>
+        <field name="displayFlg" description="是否显示 1显示 0不显示" fieldZHName="是否显示 1显示 0不显示" type="TINYINT" typeTag="number" precision="[4]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="guarantee_coverage" tableZHName="保障责任">
+        <field name="id" description="主键id" fieldZHName="主键id" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="guaranteeId" description="保障id" fieldZHName="保障id" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="productCode" description="产品编号" fieldZHName="产品编号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="coverageCode" description="责任编号" fieldZHName="责任编号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="coverageName" description="责任名称" fieldZHName="责任名称" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="premium" description="责任保费" fieldZHName="责任保费" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="claimType" description="理赔类型" fieldZHName="理赔类型" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="maxClaimAmount" description="最大理赔限额(保额)" fieldZHName="最大理赔限额(保额)" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="coverageDescription" description="责任描述" fieldZHName="责任描述" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="claimRatio" description="赔付比例" fieldZHName="赔付比例" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="deductible" description="免赔额" fieldZHName="免赔额" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="guarantee_pricingparam" tableZHName="保障计价参数">
+        <field name="id" description="" fieldZHName="" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="guaranteeId" description="保障id" fieldZHName="保障id" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="parameterName" description="阐述名称" fieldZHName="阐述名称" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="parameterDescription" description="参数描述" fieldZHName="参数描述" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="parameterType" description="参数类型" fieldZHName="参数类型" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="value" description="参数值" fieldZHName="参数值" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="quotationMapProposal" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="order_customer" tableZHName="订单客户">
+        <field name="id" description="" fieldZHName="" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="type" description="类型(投保人:HOLDER,被保人:INSURED)" fieldZHName="类型(投保人:HOLDER,被保人:INSURED)" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="orderId" description="订单id" fieldZHName="订单id" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="customerName" description="客户名称" fieldZHName="客户名称" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="idNumber" description="身份证" fieldZHName="身份证" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="mobile" description="电话" fieldZHName="电话" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="relationWithHolder" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="parameters" description="客户参数" fieldZHName="客户参数" type="LONGTEXT" typeTag="character" precision="[536870911]"/>
+        <field name="status" description="和订单关联是否有效(1:有效,0:无效)" fieldZHName="和订单关联是否有效(1:有效,0:无效)" type="INT" typeTag="number" precision="[1]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="order_log" tableZHName="订单LOG">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="orderId" description="订单id" fieldZHName="订单id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="type" description="类型" fieldZHName="类型" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="日志内容" fieldZHName="日志内容" type="LONGTEXT" typeTag="character" precision="[536870911]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="order_user" tableZHName="订单用户">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="orderId" description="订单id" fieldZHName="订单id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="sourceType" description="来源类型，1活动，2购买，3接收" fieldZHName="来源类型，1活动，2购买，3接收" type="TINYINT" typeTag="number" precision="[2]"/>
+        <field name="fromUserId" description="赠送用户id" fieldZHName="赠送用户id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="userId" description="当前用户id" fieldZHName="当前用户id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="toUserId" description="接收用户id" fieldZHName="接收用户id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="fromMsg" description="fromUser的消息" fieldZHName="fromUser的消息" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="toMsg" description="toMsg的消息" fieldZHName="toMsg的消息" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="status" description="状态，1已接收，2赠送中，3已赠送，4已退回，5已激活，6已失效" fieldZHName="状态，1已接收，2赠送中，3已赠送，4已退回，5已激活，6已失效" type="INT" typeTag="number" precision="[5]"/>
+        <field name="sendTime" description="赠送时间" fieldZHName="赠送时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="user" tableZHName="用户">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="account" description="用户帐号" fieldZHName="用户帐号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="password" description="密码" fieldZHName="密码" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="type" description="用户类型" fieldZHName="用户类型" type="INT" typeTag="number" precision="[11]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+    </db>
+    <db dbName="wxmp_card" dbZHName="卡单库">
+      <table id="activity" tableZHName="活动">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="title" description="标题" fieldZHName="标题" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="description" description="描述" fieldZHName="描述" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="cardId" description="卡片id" fieldZHName="卡片id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="guaranteeId" description="保障id" fieldZHName="保障id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="expiryTime" description="到期时间" fieldZHName="到期时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="totalCount" description="活动总数" fieldZHName="活动总数" type="INT" typeTag="number" precision="[11]"/>
+        <field name="status" description="状态,0无效,1有效" fieldZHName="状态,0无效,1有效" type="INT" typeTag="number" precision="[5]"/>
+        <field name="consumeCount" description="已消费数量" fieldZHName="已消费数量" type="INT" typeTag="number" precision="[11]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="pid" description="赠险平台活动id" fieldZHName="赠险平台活动id" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="projectProductId" description="赠险平台活动产品id" fieldZHName="赠险平台活动产品id" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="isAgentActive" description="代理人是否可以激活，1可以，0不可以" fieldZHName="代理人是否可以激活，1可以，0不可以" type="TINYINT" typeTag="number" precision="[2]"/>
+      </table>
+      <table id="activity_order" tableZHName="活动订单">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="activityId" description="活动id" fieldZHName="活动id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="customerId" description="客户id" fieldZHName="客户id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="orderId" description="订单id" fieldZHName="订单id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="activeCode" description="激活码" fieldZHName="激活码" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="card" tableZHName="卡">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="coverPicture" description="卡封面" fieldZHName="卡封面" type="VARCHAR" typeTag="character" precision="[500]"/>
+        <field name="title" description="卡标题" fieldZHName="卡标题" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="typeId" description="类型id" fieldZHName="类型id" type="INT" typeTag="number" precision="[10]"/>
+        <field name="showOrder" description="显示顺序" fieldZHName="显示顺序" type="INT" typeTag="number" precision="[10]"/>
+        <field name="status" description="状态 0下线,1上线" fieldZHName="状态 0下线,1上线" type="INT" typeTag="number" precision="[5]"/>
+        <field name="hotSell" description="是否热推,0否,1是" fieldZHName="是否热推,0否,1是" type="INT" typeTag="number" precision="[5]"/>
+        <field name="description" description="卡片描述,寄语" fieldZHName="卡片描述,寄语" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="displayFlg" description="是否显示 1显示 0不显示" fieldZHName="是否显示 1显示 0不显示" type="TINYINT" typeTag="number" precision="[4]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="card_order" tableZHName="卡订单">
+        <field name="id" description="" fieldZHName="" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="sourceType" description="来源类型，1活动，2购买" fieldZHName="来源类型，1活动，2购买" type="TINYINT" typeTag="number" precision="[2]"/>
+        <field name="productCode" description="产品代码" fieldZHName="产品代码" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="cardId" description="卡ID" fieldZHName="卡ID" type="INT" typeTag="number" precision="[11]"/>
+        <field name="guaranteeId" description="保障id" fieldZHName="保障id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="guaranteePeriod" description="保障期限" fieldZHName="保障期限" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="guaranteeCost" description="保障价格" fieldZHName="保障价格" type="DECIMAL" typeTag="number" precision="[10]"/>
+        <field name="guaranteeAmount" description="保障保额" fieldZHName="保障保额" type="DECIMAL" typeTag="number" precision="[10]"/>
+        <field name="status" description="订单状态" fieldZHName="订单状态" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="effectiveDate" description="生效日期" fieldZHName="生效日期" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="expiredDate" description="失效时间" fieldZHName="失效时间" type="DATE" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="activeUserId" description="激活人ID" fieldZHName="激活人ID" type="INT" typeTag="number" precision="[11]"/>
+        <field name="activeTime" description="激活时间" fieldZHName="激活时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="proposalNumber" description="投保单号" fieldZHName="投保单号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="policyNum" description="激活后保单编号" fieldZHName="激活后保单编号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="card_pay_log" tableZHName="卡支付LOG">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="payOrderId" description="支付订单号" fieldZHName="支付订单号" type="INT" typeTag="number" precision="[11]"/>
+        <field name="type" description="类型 1微信支付，2微信支付通知" fieldZHName="类型 1微信支付，2微信支付通知" type="TINYINT" typeTag="number" precision="[2]"/>
+        <field name="request" description="请求内容" fieldZHName="请求内容" type="LONGTEXT" typeTag="character" precision="[536870911]"/>
+        <field name="response" description="响应内容" fieldZHName="响应内容" type="LONGTEXT" typeTag="character" precision="[536870911]"/>
+        <field name="createTime" description="" fieldZHName="" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="card_pay_order" tableZHName="卡支付订单">
+        <field name="id" description="" fieldZHName="" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="userId" description="用户ID" fieldZHName="用户ID" type="INT" typeTag="number" precision="[11]"/>
+        <field name="cardId" description="卡ID" fieldZHName="卡ID" type="INT" typeTag="number" precision="[11]"/>
+        <field name="guaranteeId" description="保障id" fieldZHName="保障id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="tradeNum" description="商户交易订单号,用于微信支付" fieldZHName="商户交易订单号,用于微信支付" type="VARCHAR" typeTag="character" precision="[32]"/>
+        <field name="formId" description="formId" fieldZHName="formId" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="payAmount" description="支付金额" fieldZHName="支付金额" type="DECIMAL" typeTag="number" precision="[10]"/>
+        <field name="status" description="状态  1待支付，2支付中，3支付成功，4支付失败" fieldZHName="状态  1待支付，2支付中，3支付成功，4支付失败" type="TINYINT" typeTag="number" precision="[2]"/>
+        <field name="orderId" description="订单ID" fieldZHName="订单ID" type="INT" typeTag="number" precision="[11]"/>
+        <field name="transactionId" description="微信支付订单号" fieldZHName="微信支付订单号" type="VARCHAR" typeTag="character" precision="[32]"/>
+        <field name="payTime" description="支付时间" fieldZHName="支付时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="coreStatus" description="核心系统状态" fieldZHName="核心系统状态" type="VARCHAR" typeTag="character" precision="[20]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="card_type" tableZHName="卡类型">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="description" description="描述" fieldZHName="描述" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="status" description="状态" fieldZHName="状态" type="INT" typeTag="number" precision="[5]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="customer_info" tableZHName="客户信息">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="openId" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="type" description="用户类型，1：普通用户，2代理用户" fieldZHName="用户类型，1：普通用户，2代理用户" type="TINYINT" typeTag="number" precision="[2]"/>
+        <field name="name" description="客户姓名" fieldZHName="客户姓名" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="mobile" description="手机号" fieldZHName="手机号" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="email" description="邮箱" fieldZHName="邮箱" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="residentArea" description="常住地" fieldZHName="常住地" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="agentName" description="用户姓名" fieldZHName="用户姓名" type="VARCHAR" typeTag="character" precision="[100]"/>
+        <field name="agentJobNumber" description="工号" fieldZHName="工号" type="VARCHAR" typeTag="character" precision="[50]"/>
+        <field name="status" description="用户状态 1有效，0无效" fieldZHName="用户状态 1有效，0无效" type="TINYINT" typeTag="number" precision="[2]"/>
+        <field name="lookTime" description="查看时间" fieldZHName="查看时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="sendActiveTime" description="发送激活卡时间" fieldZHName="发送激活卡时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="customer_wechat" tableZHName="客户微信">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="customerId" description="客户id" fieldZHName="客户id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="openId" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="unionId" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="nickName" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="avatarUrl" description="头像" fieldZHName="头像" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="gender" description="用户的性别，值为1时是男性，值为2时是女性，值为0时是未知" fieldZHName="用户的性别，值为1时是男性，值为2时是女性，值为0时是未知" type="CHAR" typeTag="character" precision="[1]"/>
+        <field name="city" description="城市" fieldZHName="城市" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="province" description="省份" fieldZHName="省份" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="country" description="国家" fieldZHName="国家" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="language" description="语言" fieldZHName="语言" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="guarantee" tableZHName="保障产品">
+        <field name="id" description="" fieldZHName="" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="productCode" description="产品代码" fieldZHName="产品代码" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="status" description="状态 0下线,1上线" fieldZHName="状态 0下线,1上线" type="INT" typeTag="number" precision="[5]"/>
+        <field name="period" description="保障期限" fieldZHName="保障期限" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="title" description="保障标题" fieldZHName="保障标题" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="description" description="保障描述" fieldZHName="保障描述" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="replenishDesc" description="保障补充显示信息" fieldZHName="保障补充显示信息" type="TEXT" typeTag="character" precision="[21845]"/>
+        <field name="showOrder" description="展示顺序" fieldZHName="展示顺序" type="INT" typeTag="number" precision="[10]"/>
+        <field name="productName" description="产品名称" fieldZHName="产品名称" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="premium" description="保费" fieldZHName="保费" type="DECIMAL" typeTag="number" precision="[20]"/>
+        <field name="totalLimitAmount" description="总保额" fieldZHName="总保额" type="DECIMAL" typeTag="number" precision="[20]"/>
+        <field name="displayFlg" description="是否显示 1显示 0不显示" fieldZHName="是否显示 1显示 0不显示" type="TINYINT" typeTag="number" precision="[4]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="guarantee_coverage" tableZHName="保障责任">
+        <field name="id" description="主键id" fieldZHName="主键id" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="guaranteeId" description="保障id" fieldZHName="保障id" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="productCode" description="产品编号" fieldZHName="产品编号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="coverageCode" description="责任编号" fieldZHName="责任编号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="coverageName" description="责任名称" fieldZHName="责任名称" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="premium" description="责任保费" fieldZHName="责任保费" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="claimType" description="理赔类型" fieldZHName="理赔类型" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="maxClaimAmount" description="最大理赔限额(保额)" fieldZHName="最大理赔限额(保额)" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="coverageDescription" description="责任描述" fieldZHName="责任描述" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="claimRatio" description="赔付比例" fieldZHName="赔付比例" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="deductible" description="免赔额" fieldZHName="免赔额" type="DECIMAL" typeTag="number" precision="[19]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="guarantee_pricingparam" tableZHName="保障计价参数">
+        <field name="id" description="" fieldZHName="" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="guaranteeId" description="保障id" fieldZHName="保障id" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="parameterName" description="阐述名称" fieldZHName="阐述名称" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="parameterDescription" description="参数描述" fieldZHName="参数描述" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="parameterType" description="参数类型" fieldZHName="参数类型" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="value" description="参数值" fieldZHName="参数值" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="quotationMapProposal" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="order_customer" tableZHName="订单客户">
+        <field name="id" description="" fieldZHName="" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="type" description="类型(投保人:HOLDER,被保人:INSURED)" fieldZHName="类型(投保人:HOLDER,被保人:INSURED)" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="orderId" description="订单id" fieldZHName="订单id" type="BIGINT" typeTag="character" precision="[20]"/>
+        <field name="customerName" description="客户名称" fieldZHName="客户名称" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="idNumber" description="身份证" fieldZHName="身份证" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="mobile" description="电话" fieldZHName="电话" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="relationWithHolder" description="" fieldZHName="" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="parameters" description="客户参数" fieldZHName="客户参数" type="LONGTEXT" typeTag="character" precision="[536870911]"/>
+        <field name="status" description="和订单关联是否有效(1:有效,0:无效)" fieldZHName="和订单关联是否有效(1:有效,0:无效)" type="INT" typeTag="number" precision="[1]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="order_log" tableZHName="订单LOG">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="orderId" description="订单id" fieldZHName="订单id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="type" description="类型" fieldZHName="类型" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="content" description="日志内容" fieldZHName="日志内容" type="LONGTEXT" typeTag="character" precision="[536870911]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="order_user" tableZHName="订单用户">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="orderId" description="订单id" fieldZHName="订单id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="sourceType" description="来源类型，1活动，2购买，3接收" fieldZHName="来源类型，1活动，2购买，3接收" type="TINYINT" typeTag="number" precision="[2]"/>
+        <field name="fromUserId" description="赠送用户id" fieldZHName="赠送用户id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="userId" description="当前用户id" fieldZHName="当前用户id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="toUserId" description="接收用户id" fieldZHName="接收用户id" type="INT" typeTag="number" precision="[11]"/>
+        <field name="fromMsg" description="fromUser的消息" fieldZHName="fromUser的消息" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="toMsg" description="toMsg的消息" fieldZHName="toMsg的消息" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="status" description="状态，1已接收，2赠送中，3已赠送，4已退回，5已激活，6已失效" fieldZHName="状态，1已接收，2赠送中，3已赠送，4已退回，5已激活，6已失效" type="INT" typeTag="number" precision="[5]"/>
+        <field name="sendTime" description="赠送时间" fieldZHName="赠送时间" type="DATETIME" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+      <table id="user" tableZHName="用户">
+        <field name="id" description="" fieldZHName="" type="INT" typeTag="number" precision="[11]"/>
+        <field name="account" description="用户帐号" fieldZHName="用户帐号" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="password" description="密码" fieldZHName="密码" type="VARCHAR" typeTag="character" precision="[255]"/>
+        <field name="type" description="用户类型" fieldZHName="用户类型" type="INT" typeTag="number" precision="[11]"/>
+        <field name="createTime" description="创建时间" fieldZHName="创建时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+        <field name="updateTime" description="更改时间" fieldZHName="更改时间" type="TIMESTAMP" typeTag="date" precision="[yyyy-MM-dd HH:ss]"/>
+      </table>
+    </db>
+  </dataSource>
+</dataDictionary>

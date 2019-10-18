@@ -1,0 +1,44 @@
+<report dataSourceId="dataSourceID" dbName="databasename" name="studentTotalGrade" ZHName="报表" pageSize="100">
+    <input>
+        <param id="paramid" ZHName="姓名" defaultValue="" minValue="" maxValue="" col="student.name" operand="like" />
+        <param id="paramid" ZHName="年龄" defaultValue="15" minValue="" maxValue="" col="student.name" operand="like" />
+        <param id="paramid" ZHName="性别" opValue="1-男|0-女" minValue="" maxValue="" col="student.name" operand="like" />
+    </input>
+    <query>
+        <query table="student, course" joinType="left"
+               joinCondition="course.studentId=student.id and course.studentId=student.no" orderby="student.id"
+               groupby="student.id"><!-- 限定两张表，多张表join，分多个query -->
+            <condition>
+                <and>
+                    <factor refparam="paramid"/>
+                    <or>
+                        <factor refparam="paramid"/>
+                    </or>
+                    <factor refparam="paramid"/>
+                </and>
+            </condition>
+            <result>
+                <field name="student.id"/>
+                <field name="student.name"/>
+                <field name="student.age"/>
+                <field name="student.grade" method="sum" alias="totalGrade"/>
+            </result>
+        </query>
+        <condition>
+            <and>
+                <factor refparam="paramid"/>
+                <and>
+                    <factor refparam="paramid"/>
+                    <factor refparam="paramid"/>
+                </and>
+            </and>
+        </condition>
+        <result>
+
+        </result>
+    </query>
+    <resultView>
+        <field name="A.id" caption=""/>
+        <field name="A.name" caption=""/>
+    </resultView>
+</report>
