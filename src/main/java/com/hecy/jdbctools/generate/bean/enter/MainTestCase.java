@@ -18,17 +18,29 @@ import java.util.Map;
  * @Version 1.0
  */
 public class MainTestCase {
+    static Configuration cfg = new Configuration(new Version("2.3.23"));
+
+
+
+
 
     public static void main(String[] args) throws TemplateException, ParserConfigurationException, SAXException, IOException {
-        gemn();
+        genDao();
+//        genPojo();
     }
 
-    public static void gemn() throws IOException, ParserConfigurationException, SAXException, TemplateException {
-        Configuration cfg = new Configuration(new Version("2.3.23"));
-        cfg.setDirectoryForTemplateLoading(new File("D:\\mygit\\javaDbAutoTools\\src\\main\\resources\\templates"));
-        Template template = cfg.getTemplate("test.ftl");
-        Map dataModel = new  HashMap<String, Object>(16);
-        File xmlFile = new File("D:\\mygit\\javaDbAutoTools\\src\\main\\resources\\design\\dataDictionary.xml");
+    /**
+     * 第一種方案，直接讀取文件，全文件搜索
+     * @throws IOException
+     * @throws ParserConfigurationException
+     * @throws SAXException
+     * @throws TemplateException
+     */
+    public static void genPojo() throws IOException, ParserConfigurationException, SAXException, TemplateException {
+        cfg.setDirectoryForTemplateLoading(new File("E:\\mygitCode\\javaDbAutoTools\\src\\main\\resources\\templates"));
+        Template template = cfg.getTemplate("pojo.ftl");
+        Map dataModel = new HashMap<String, Object>(16);
+        File xmlFile = new File("E:\\mygitCode\\javaDbAutoTools\\src\\main\\resources\\design\\dataDictionary.xml");
         NodeModel nodeModel = NodeModel.parse(xmlFile);
         dataModel.put("doc", nodeModel);
         OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream("FileName.java"));
@@ -36,5 +48,19 @@ public class MainTestCase {
         out.flush();
         out.close();
     }
+
+    public static void genDao() throws IOException, ParserConfigurationException, SAXException, TemplateException {
+        cfg.setDirectoryForTemplateLoading(new File("E:\\mygitCode\\javaDbAutoTools\\src\\main\\resources\\templates"));
+        Template template = cfg.getTemplate("AbstractBaseDao.ftl");
+        Map dataModel = new HashMap<String, Object>(16);
+        File xmlFile = new File("E:\\mygitCode\\javaDbAutoTools\\src\\main\\resources\\design\\dataDictionary.xml");
+        NodeModel nodeModel = NodeModel.parse(xmlFile);
+        dataModel.put("doc", nodeModel);
+        OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream("AbstractBaseDao.java"));
+        template.process(dataModel, out);
+        out.flush();
+        out.close();
+    }
+
 
 }

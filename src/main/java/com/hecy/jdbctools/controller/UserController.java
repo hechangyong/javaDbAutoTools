@@ -26,9 +26,13 @@ public class UserController {
     @GetMapping("/getUser")
     public User getUser() {
         List<User> user = userServce.selectUser();
-        return user.get(0);
+        System.out.printf("user: " + user);
+        List<User> user1 = userServce.selectUser1();
+        User user2 = user1.get(0);
+        user2.setUser_name("new");
+        userServce.insert(user2);
+        return user1.get(0);
     }
-
 
 
 }

@@ -18,7 +18,16 @@ public class UserServce {
     @Autowired
     UserDao userDao;
 
-    public List<User> selectUser(){
+    public List<User> selectUser() {
         return userDao.selectUser();
+    }
+
+
+    public List<User> selectUser1() {
+        return userDao.selectUser1();
+    }
+
+    public void insert(User user) {
+        userDao.insert(user);
     }
 }

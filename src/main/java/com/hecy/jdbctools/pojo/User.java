@@ -1,5 +1,9 @@
 package com.hecy.jdbctools.pojo;
 
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.Date;
+
 /**
  *
  */
@@ -11,6 +15,7 @@ public class User {
     private String user_name;
 
     private String password;
+
 
      private Integer age;
 
