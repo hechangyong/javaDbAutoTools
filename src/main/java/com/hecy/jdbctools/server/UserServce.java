@@ -30,4 +30,7 @@ public class UserServce {
     public void insert(User user) {
         userDao.insert(user);
     }
+    public void deleteById(User user) {
+        userDao.deleteById(1L);
+    }
 }

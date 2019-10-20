@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -19,24 +18,32 @@ public abstract class AbstractUserBaseDao implements IBaseDao<User> {
     JdbcTemplate jdbcTemplate;
 
 
-    public List<User> selectUser(){
-       return null;
+    public List<User> selectUser() {
+        return null;
     }
 
     @Override
     public void insert(User user) {
         String sql = "insert into user(user_name,password,age)values(?,?,?)";
-        Object args[] = {user.getUser_name(),user.getPassword(),user.getAge()};
+        Object args[] = {user.getUser_name(), user.getPassword(), user.getAge()};
         int temp = jdbcTemplate.update(sql, args);
         if (temp > 0) {
             System.out.println("插入成功！");
-        }else{
+        } else {
             System.out.println("插入失败");
         }
     }
 
     @Override
     public void deleteById(Long id) {
+        String deleteSql = "delete  from user where id =  ?";
+        String logicDeleteSql = "update user set isdelete = 1 where id = ?";
+        int temp = jdbcTemplate.update(deleteSql, id);
+        if (temp > 0) {
+            System.out.println("删除成功！");
+        } else {
+            System.out.println("删除失败");
+        }
 
     }
 
@@ -44,7 +51,7 @@ public abstract class AbstractUserBaseDao implements IBaseDao<User> {
     public List<User> select() {
 
         String sql = " select id,user_name,password ,age from user";
-        return jdbcTemplate.query(sql,new BeanPropertyRowMapper(User.class));
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper(User.class));
     }
 
 

@@ -31,6 +31,7 @@ public class UserController {
         User user2 = user1.get(0);
         user2.setUser_name("new");
         userServce.insert(user2);
+        userServce.deleteById(user2);
         return user1.get(0);
     }
 

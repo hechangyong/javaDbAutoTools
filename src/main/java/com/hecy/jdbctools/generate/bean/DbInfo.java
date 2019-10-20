@@ -14,4 +14,5 @@ public class DbInfo extends BaseModel<TableInfo> implements SubModel {
 
     String dbName;
     String dbZHName;
+    String packageName;
 }

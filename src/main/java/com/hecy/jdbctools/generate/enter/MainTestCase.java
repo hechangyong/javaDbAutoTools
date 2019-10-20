@@ -42,6 +42,7 @@ public class MainTestCase {
         Map dataModel = new HashMap<String, Object>(16);
         File xmlFile = new File("E:\\mygitCode\\javaDbAutoTools\\src\\main\\resources\\design\\dataDictionary.xml");
         NodeModel nodeModel = NodeModel.parse(xmlFile);
+        nodeModel.get("dataDictionary.dataSource.db");
         dataModel.put("doc", nodeModel);
         OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream("FileName.java"));
         template.process(dataModel, out);
