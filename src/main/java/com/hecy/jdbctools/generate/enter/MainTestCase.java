@@ -31,9 +31,8 @@ public class MainTestCase {
     DataDictionaryXmlHandle dataDictionaryXmlHandle;
 
 
-    public void mainTestCase() {
-        dataSourceXmlHandle.loadXml();
-        dataDictionaryXmlHandle.loadXml();
+    public void mainTestCase(InputStream inputStream) {
+        dataDictionaryXmlHandle.loadXmlnew(inputStream);
         try {
             genPojonew();
 //            genDaoNew();
@@ -66,6 +65,9 @@ public class MainTestCase {
     }
 
     public String toUpperCaseFirstOne(String s) {
+        if (s == null) {
+            return null;
+        }
         if (Character.isUpperCase(s.charAt(0))) {
             return s;
         } else {

@@ -92,8 +92,13 @@ public class DataDictionaryXmlHandle implements HandleXmlBase<DbInfo> {
     public void loadXml() {
         GlobalXmlData.msrsDatasourceMapper.forEach((dbid, dbinfo) -> {
             log.info("开始加载{}文件", dbid);
-            loadXml(dbid, fileConfig.getInputStreamForLinux(ddxmlPath.replace("{}", dbid)));
+            loadXml( fileConfig.getInputStreamForLinux(ddxmlPath.replace("{}", dbid)));
         });
+    }
+ public void loadXmlnew(InputStream in) {
+             log.info("开始加载{}文件");
+            loadXml(in);
+
     }
 
     public static void main(String[] args) {
@@ -114,7 +119,7 @@ public class DataDictionaryXmlHandle implements HandleXmlBase<DbInfo> {
         }
     }
 
-    private List<DbInfo> loadXml(String dataDourceId, InputStream in) {
+    private List<DbInfo> loadXml(InputStream in) {
         log.info("=====开始加载【dataSource】XML=====");
         glodbInfos = new ArrayList<>();
         List<DbInfo> subList = new ArrayList<>();

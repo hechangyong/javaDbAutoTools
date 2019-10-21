@@ -7,7 +7,10 @@ spring:
     username: dbadmin
     password: dbadmin
     connectionProperties:
-
+  mvc:
+    view:
+      prefix: /pages/
+      suffix: .html
 
 xml:
   model:

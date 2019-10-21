@@ -76,6 +76,11 @@ public class DataSourceXmlHandle implements HandleXmlBase<DataSourceInfo> {
         loadXml(fileConfig.getInputStreamForLinux(dsxmlPath));
     }
 
+    public void loadXmlnew(InputStream  inputStream) {
+        log.info("装载XML文件数据：{}");
+        loadXml(inputStream);
+    }
+
 
     private List<DataSourceInfo> loadXml(InputStream inputStream) {
         dataSourceslist = new ArrayList<>();
