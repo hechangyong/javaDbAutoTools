@@ -1,8 +1,8 @@
 package com.hecy.jdbctools.generate.common;
 
 
-import com.hecy.jdbctools.generate.bean.DataDictionary;
 import com.hecy.jdbctools.generate.bean.DataSourceInfo;
+import com.hecy.jdbctools.generate.bean.DbInfo;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +25,7 @@ public class GlobalXmlData {
     /**
      * 数据字典全局数据
      */
-    public static Map<String, DataDictionary> msrsDataDictionaryMapper = new HashMap<>();
+    public static Map<String, DbInfo> msrsDbInfosMapper = new HashMap<>();
 
 
     /**

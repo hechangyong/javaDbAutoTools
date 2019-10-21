@@ -18,4 +18,6 @@ public class TableInfo  extends BaseModel<FieldInfo> implements SubModel {
 
     private String referTables;
 
+    private String hasLogicDelete;
+
 }

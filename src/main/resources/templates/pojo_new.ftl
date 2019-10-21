@@ -6,8 +6,8 @@ import java.util.Date;
 <#macro  typeHandler jdbctype>
     <#switch  jdbctype>
         <#case 'varchar'> String<#break>
-         <#case 'mediumtext'>String<#break>
-         <#case 'longtext'>String<#break>
+        <#case 'mediumtext'>String<#break>
+        <#case 'longtext'>String<#break>
         <#case 'char'> String<#break>
         <#case 'bigint'> Long<#break>
         <#case 'date'> Date<#break>
@@ -34,11 +34,11 @@ public class ${tableModel.id?cap_first} {
     public  <@typeHandler jdbctype="${field.type}"/> get${field.name?cap_first}(){
         return ${field.name};
     }
-<#if  field.name != "id">
+    <#if  field.name != "id">
     public void set${field.name?cap_first}(<@typeHandler jdbctype="${field.type}"/> ${field.name}){
         this.${field.name} = ${field.name};
     }
-</#if>
+    </#if>
 </#list>
 
 

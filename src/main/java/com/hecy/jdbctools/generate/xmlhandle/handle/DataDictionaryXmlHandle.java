@@ -1,7 +1,5 @@
 package com.hecy.jdbctools.generate.xmlhandle.handle;
 
-import com.hecy.jdbctools.config.XmlReadTools;
-import com.hecy.jdbctools.generate.bean.DataDictionary;
 import com.hecy.jdbctools.generate.bean.DbInfo;
 import com.hecy.jdbctools.generate.bean.FieldInfo;
 import com.hecy.jdbctools.generate.bean.TableInfo;
@@ -11,7 +9,7 @@ import com.hecy.jdbctools.generate.common.GlobalXmlData;
 import com.hecy.jdbctools.generate.config.FileConfig;
 import com.hecy.jdbctools.generate.utils.Dom4jXmlParse;
 import com.hecy.jdbctools.generate.xmlhandle.HandleXmlBase;
-  import org.dom4j.Document;
+import org.dom4j.Document;
 import org.dom4j.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +18,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 
- import java.io.InputStream;
+import java.io.InputStream;
 import java.util.*;
 
 /**
@@ -28,8 +26,8 @@ import java.util.*;
  * @Date: 2019/7/4 15:32
  * @Version 1.0
  */
- @Component
-public class DataDictionaryXmlHandle implements HandleXmlBase<DataDictionary> {
+@Component
+public class DataDictionaryXmlHandle implements HandleXmlBase<DbInfo> {
 
     private static Logger log = LoggerFactory.getLogger(DataDictionaryXmlHandle.class);
 
@@ -37,7 +35,7 @@ public class DataDictionaryXmlHandle implements HandleXmlBase<DataDictionary> {
      * key: key数据源ID
      * value: 数据字典
      */
-    public Map<String, List<DataDictionary>> ddMap;
+    public List<DbInfo> glodbInfos;
 
     final Object dataDictionaryKey = new Object();
 
@@ -49,9 +47,6 @@ public class DataDictionaryXmlHandle implements HandleXmlBase<DataDictionary> {
 
     @Autowired
     FileConfig fileConfig;
-
-
-
 
 
     private String transformTag(String type) {
@@ -119,37 +114,29 @@ public class DataDictionaryXmlHandle implements HandleXmlBase<DataDictionary> {
         }
     }
 
-    private List<DataDictionary> loadXml(String dataDourceId, InputStream in) {
+    private List<DbInfo> loadXml(String dataDourceId, InputStream in) {
         log.info("=====开始加载【dataSource】XML=====");
-        ddMap = new HashMap<>();
-        List<DataDictionary> subList = new ArrayList<>();
+        glodbInfos = new ArrayList<>();
+        List<DbInfo> subList = new ArrayList<>();
         try {
             Document document = Dom4jXmlParse.parse(in);
             Element eles = document.getRootElement();
             Iterator it = eles.elementIterator();
+            List<DbInfo> dbInfos = new ArrayList<>();
             while (it.hasNext()) {
-                log.info("=====开始遍历【dataSource】节点=====");
-                Element ele = (Element) it.next();
-                Iterator dbit = ele.elementIterator();
-                DataDictionary dataSource = Dom4jXmlParse.loadMetadataElementToBean(ele, DataDictionary.class);
-                List<DbInfo> dbInfos = new ArrayList<>();
-                while (dbit.hasNext()) {
-                    Element dbele = (Element) dbit.next();
-                    Iterator itt = dbele.elementIterator();
-                    DbInfo dbInfo = Dom4jXmlParse.loadMetadataElementToBean(dbele, DbInfo.class);
-                    List<TableInfo> tableInfos = new ArrayList<>();
-                    while (itt.hasNext()) {
-                        TableInfo tableInfo = assembleBean((Element) itt.next(), TableInfo.class, FieldInfo.class);
-                        tableInfos.add(tableInfo);
-                    }
-                    dbInfo.setSubList(tableInfos);
-                    dbInfos.add(dbInfo);
+                Element dbele = (Element) it.next();
+                Iterator itt = dbele.elementIterator();
+                DbInfo dbInfo = Dom4jXmlParse.loadMetadataElementToBean(dbele, DbInfo.class);
+                List<TableInfo> tableInfos = new ArrayList<>();
+                while (itt.hasNext()) {
+                    TableInfo tableInfo = assembleBean((Element) itt.next(), TableInfo.class, FieldInfo.class);
+                    tableInfos.add(tableInfo);
                 }
-                dataSource.setSubList(dbInfos);
-                subList.add(dataSource);
+                dbInfo.setSubList(tableInfos);
+                dbInfos.add(dbInfo);
             }
-            ddMap.put(dataDourceId, subList);
-            log.info("dataSource: {}", ddMap);
+            glodbInfos = dbInfos;
+            log.info("dataSource: {}", glodbInfos);
 
         } catch (Exception e) {
             log.error("加载数据 源问价出现异常：{}", e.getMessage(), e);
@@ -176,20 +163,19 @@ public class DataDictionaryXmlHandle implements HandleXmlBase<DataDictionary> {
     @Override
     public void updateGlobalXmlData() {
         synchronized (dataDictionaryKey) {
-            ddMap.forEach((dataSourceId, infos) -> {
-                infos.forEach(dataDictionary -> {
-                    if (GlobalXmlData.msrsDataDictionaryMapper.containsKey(dataSourceId)) {
-                        log.error("配置文件存在重复的数据源ID ：{}", dataSourceId);
-                        try {
-                            throw new Throwable("配置文件存在重复的数据源ID：" + dataSourceId);
-                        } catch (Throwable throwable) {
-                            throwable.printStackTrace();
-                        }
+            glodbInfos.forEach(dbinfos -> {
+                if (GlobalXmlData.msrsDbInfosMapper.containsKey(dbinfos.getDbName())) {
+                    log.error("配置文件存在重复的数据源ID ：{}", dbinfos.getDbName());
+                    try {
+                        throw new Throwable("配置文件存在重复的数据源ID：" + dbinfos.getDbName());
+                    } catch (Throwable throwable) {
+                        throwable.printStackTrace();
                     }
-                    GlobalXmlData.msrsDataDictionaryMapper.put(dataSourceId, dataDictionary);
-                });
-
+                }
+                GlobalXmlData.msrsDbInfosMapper.put(dbinfos.getDbName(), dbinfos);
             });
+
+
         }
     }
 }

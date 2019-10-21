@@ -5,16 +5,13 @@ import com.hecy.jdbctools.generate.xmlhandle.handle.DataDictionaryXmlHandle;
 import com.hecy.jdbctools.generate.xmlhandle.handle.DataSourceXmlHandle;
 import freemarker.ext.dom.NodeModel;
 import freemarker.template.*;
-import javafx.collections.ObservableMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 
 /**
@@ -38,8 +35,8 @@ public class MainTestCase {
         dataSourceXmlHandle.loadXml();
         dataDictionaryXmlHandle.loadXml();
         try {
-//            genPojonew();
-            genDaoNew();
+            genPojonew();
+//            genDaoNew();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -87,22 +84,20 @@ public class MainTestCase {
     public void genPojonew() throws IOException, ParserConfigurationException, SAXException, TemplateException {
         cfg.setDirectoryForTemplateLoading(new File("D:\\mygit\\javaDbAutoTools\\src\\main\\resources\\templates"));
         Template template = cfg.getTemplate("pojo_new.ftl");
-        GlobalXmlData.msrsDataDictionaryMapper.forEach((dataSourceId, datas) -> {
-            Map dataModel = new HashMap<String, Object>(16);
-            datas.getSubList().forEach(dbInfo -> {
-                dataModel.put("packageName", dbInfo.getPackageName());
-                dbInfo.getSubList().forEach(tableInfo -> {
-                    dataModel.put("tableModel", tableInfo);
-                    OutputStreamWriter out = null;
-                    try {
-                        out = new OutputStreamWriter(new FileOutputStream("D:\\mygit\\javaDbAutoTools\\tempDir\\" + toUpperCaseFirstOne(tableInfo.getId()) + ".java"));
-                        template.process(dataModel, out);
-                        out.flush();
-                        out.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
+        Map dataModel = new HashMap<String, Object>(16);
+        GlobalXmlData.msrsDbInfosMapper.forEach((dbName, dbInfo) -> {
+            dataModel.put("packageName", dbInfo.getPackageName());
+            dbInfo.getSubList().forEach(tableInfo -> {
+                dataModel.put("tableModel", tableInfo);
+                OutputStreamWriter out = null;
+                try {
+                    out = new OutputStreamWriter(new FileOutputStream("D:\\mygit\\javaDbAutoTools\\tempDir\\" + toUpperCaseFirstOne(tableInfo.getId()) + ".java"));
+                    template.process(dataModel, out);
+                    out.flush();
+                    out.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             });
         });
 
@@ -126,28 +121,25 @@ public class MainTestCase {
         cfg.setDirectoryForTemplateLoading(new File("D:\\mygit\\javaDbAutoTools\\src\\main\\resources\\templates"));
         Template template = cfg.getTemplate("AbstractBaseDao_new.ftl");
         //        File xmlFile = new File("E:\\mygitCode\\javaDbAutoTools\\src\\main\\resources\\design\\dataDictionary.xml");
-        GlobalXmlData.msrsDataDictionaryMapper.forEach((dataSourceId, datas) -> {
-            Map dataModel = new HashMap<String, Object>(16);
-            datas.getSubList().forEach(dbInfo -> {
-                dataModel.put("packageName", dbInfo.getPackageName());
-                dbInfo.getSubList().forEach(tableInfo -> {
-                    dataModel.put("tableModel", tableInfo);
-                    OutputStreamWriter out = null;
-                    try {
-                        out = new OutputStreamWriter(new FileOutputStream("D:\\mygit\\javaDbAutoTools\\tempDir\\dao\\Abstract"+toUpperCaseFirstOne(tableInfo.getId())+"BaseDao.java"));
-                        template.process(dataModel, out);
-                        out.flush();
-                        out.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
+        Map dataModel = new HashMap<String, Object>(16);
+        GlobalXmlData.msrsDbInfosMapper.forEach((dbName, dbInfo) -> {
+            dataModel.put("packageName", dbInfo.getPackageName());
+            dbInfo.getSubList().forEach(tableInfo -> {
+                dataModel.put("tableModel", tableInfo);
+                OutputStreamWriter out = null;
+                try {
+                    out = new OutputStreamWriter(new FileOutputStream("D:\\mygit\\javaDbAutoTools\\tempDir\\dao\\Abstract" + toUpperCaseFirstOne(tableInfo.getId()) + "BaseDao.java"));
+                    template.process(dataModel, out);
+                    out.flush();
+                    out.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             });
         });
 
 
     }
-
 
 
 }
