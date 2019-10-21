@@ -26,7 +26,6 @@ public abstract class Abstract${tableModel.@id?cap_first}BaseDao implements IBas
     }
 
 
-
     @Override
     public void deleteById(Long id) {
     <#if tableModel.@hasLogicDelete[0]??>

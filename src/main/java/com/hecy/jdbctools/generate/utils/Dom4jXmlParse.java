@@ -18,6 +18,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.hecy.jdbctools.generate.utils.StringUtils.converToLowerCase;
+import static com.hecy.jdbctools.generate.utils.StringUtils.underlineToHump;
+
 /**
  * @Author: hecy
  * @Date: 2019/7/3 14:35
@@ -33,6 +36,7 @@ public class Dom4jXmlParse {
         Document document = reader.read(file);
         return document;
     }
+
     public static Document parse(InputStream in) throws DocumentException {
         SAXReader reader = new SAXReader();
         Document document = reader.read(in);
@@ -53,7 +57,10 @@ public class Dom4jXmlParse {
             List<Attribute> attrs = eles.attributes();
             Map<String, String> attrsMap = new HashMap<>();
             for (Attribute attr : attrs) {
-                attrsMap.put(attr.getName(), attr.getValue());
+                if (attr.getName() != null && "type".equals(attr.getName())) {
+                    attrsMap.put(attr.getName(), converToLowerCase(attr.getValue()));
+                }
+                attrsMap.put(attr.getName(), underlineToHump(attr.getValue()));
             }
             MapUtil.mapToBean(attrsMap, bean);
         }

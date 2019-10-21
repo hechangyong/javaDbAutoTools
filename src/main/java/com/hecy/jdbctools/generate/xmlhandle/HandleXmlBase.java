@@ -10,8 +10,14 @@ public interface HandleXmlBase<T> {
 
     void generateXml();
 
+    /**
+     * 加载XML文件
+     */
     void loadXml();
 
+    /**
+     * 更新全局XML数据
+     */
     void updateGlobalXmlData();
 
 }

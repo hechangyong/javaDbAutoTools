@@ -7,3 +7,12 @@ spring:
     username: dbadmin
     password: dbadmin
     connectionProperties:
+
+
+xml:
+  model:
+    appname: javaDbAutoTools
+    genpath: "design\\model\\original\\"
+    dsxmlPath: "design\\model\\dataSource.xml"
+    ddxmlPath: "design\\model\\handleXml\\dd_{}.xml"
+    opXmlPath: "design\\model\\operator.xml"

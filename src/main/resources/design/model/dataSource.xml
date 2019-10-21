@@ -13,11 +13,4 @@
                 username="bcuser"
                 password="bcuser_12"
     />
-    <dataSource id="2"
-                name="青云测试环境"
-                url="jdbc:mysql://172.16.0.6:3306/{}?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;serverTimezone=Hongkong"
-                driver="com.mysql.jdbc.Driver"
-                username="activity"
-                password="Activity@!mslife234"
-    />
 </dataSources>

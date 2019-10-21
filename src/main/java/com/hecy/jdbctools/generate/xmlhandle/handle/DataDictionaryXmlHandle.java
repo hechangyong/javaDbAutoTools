@@ -11,9 +11,7 @@ import com.hecy.jdbctools.generate.common.GlobalXmlData;
 import com.hecy.jdbctools.generate.config.FileConfig;
 import com.hecy.jdbctools.generate.utils.Dom4jXmlParse;
 import com.hecy.jdbctools.generate.xmlhandle.HandleXmlBase;
-import com.mysql.cj.log.LogFactory;
-import lombok.extern.slf4j.Slf4j;
-import org.dom4j.Document;
+  import org.dom4j.Document;
 import org.dom4j.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,8 +20,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 
-import java.io.File;
-import java.io.InputStream;
+ import java.io.InputStream;
 import java.util.*;
 
 /**
@@ -31,8 +28,7 @@ import java.util.*;
  * @Date: 2019/7/4 15:32
  * @Version 1.0
  */
-@Slf4j
-@Component
+ @Component
 public class DataDictionaryXmlHandle implements HandleXmlBase<DataDictionary> {
 
     private static Logger log = LoggerFactory.getLogger(DataDictionaryXmlHandle.class);

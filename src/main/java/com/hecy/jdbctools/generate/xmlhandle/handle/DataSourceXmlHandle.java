@@ -5,7 +5,6 @@ import com.hecy.jdbctools.generate.common.GlobalXmlData;
 import com.hecy.jdbctools.generate.config.FileConfig;
 import com.hecy.jdbctools.generate.utils.Dom4jXmlParse;
 import com.hecy.jdbctools.generate.xmlhandle.HandleXmlBase;
-import lombok.extern.slf4j.Slf4j;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.slf4j.Logger;
@@ -28,7 +27,6 @@ import java.util.List;
  * @Date: 2019/7/4 10:58
  * @Version 1.0
  */
-@Slf4j
 @Component
 public class DataSourceXmlHandle implements HandleXmlBase<DataSourceInfo> {
     private static Logger log = LoggerFactory.getLogger(DataSourceXmlHandle.class);
@@ -53,6 +51,7 @@ public class DataSourceXmlHandle implements HandleXmlBase<DataSourceInfo> {
     /**
      * 更新数据源数据
      */
+    @Override
     public void updateGlobalXmlData() {
         log.info("更新数据源数据。");
         synchronized (key) {
