@@ -37,7 +37,10 @@ public class TempleFileHandle {
     @Value("${templatePath}")
     String templatePath;
 
-    public TempleFileHandle initData(InputStream inputStream) {
+    String currentXmlFileName = null;
+
+    public TempleFileHandle initData(InputStream inputStream,String currentXmlFileName) {
+        this.currentXmlFileName = currentXmlFileName;
         dataDictionaryXmlHandle.loadXmlnew(inputStream);
         return this;
     }
