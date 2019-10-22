@@ -37,7 +37,7 @@ public class UserController {
     }
     @GetMapping("/b")
     public void b() {
-        mainTestCase.mainTestCase(null);
+        mainTestCase.mainTestCase1();
     }
 
 

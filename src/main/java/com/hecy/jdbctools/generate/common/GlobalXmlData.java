@@ -1,7 +1,6 @@
 package com.hecy.jdbctools.generate.common;
 
 
-import com.hecy.jdbctools.generate.bean.DataSourceInfo;
 import com.hecy.jdbctools.generate.bean.DbInfo;
 
 import java.util.HashMap;
@@ -17,12 +16,6 @@ public class GlobalXmlData {
 
 
     /**
-     * 数据源数据
-     */
-    public static Map<String, DataSourceInfo> msrsDatasourceMapper = new HashMap<>();
-
-
-    /**
      * 数据字典全局数据
      */
     public static Map<String, DbInfo> msrsDbInfosMapper = new HashMap<>();
@@ -30,6 +23,7 @@ public class GlobalXmlData {
 
     /**
      * 生成数据字典map KEY
+     *
      * @param dataSourceId
      * @param ddId
      * @return

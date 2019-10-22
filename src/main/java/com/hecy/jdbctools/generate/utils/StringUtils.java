@@ -1,5 +1,10 @@
 package com.hecy.jdbctools.generate.utils;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
+
 /**
  * @Author: hecy
  * @Date: 2019/10/21 15:56
@@ -19,6 +24,27 @@ public class StringUtils {
             return null;
         }
         return data.toLowerCase();
+    }
+
+    public static String uuid(){
+        DateFormat format3 = new SimpleDateFormat("yyyyMMddHHmmss");
+        String uuid = UUID.randomUUID().toString() + format3.format(new Date());
+        return uuid;
+    }
+    /**
+     * 将字符串首字母大写
+     * @param s
+     * @return
+     */
+    public static String toUpperCaseFirstOne(String s) {
+        if (s == null) {
+            return null;
+        }
+        if (Character.isUpperCase(s.charAt(0))) {
+            return s;
+        } else {
+            return (new StringBuilder()).append(Character.toUpperCase(s.charAt(0))).append(s.substring(1)).toString();
+        }
     }
 
     public static void main(String[] args) {

@@ -19,3 +19,5 @@ xml:
     dsxmlPath: "design\\model\\dataSource.xml"
     ddxmlPath: "design\\model\\handleXml\\dd_{}.xml"
     opXmlPath: "design\\model\\operator.xml"
+
+fileuploadPath: "upload\\"

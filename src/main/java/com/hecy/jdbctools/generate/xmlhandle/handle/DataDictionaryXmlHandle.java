@@ -90,34 +90,15 @@ public class DataDictionaryXmlHandle implements HandleXmlBase<DbInfo> {
 
     @Override
     public void loadXml() {
-        GlobalXmlData.msrsDatasourceMapper.forEach((dbid, dbinfo) -> {
-            log.info("开始加载{}文件", dbid);
-            loadXml( fileConfig.getInputStreamForLinux(ddxmlPath.replace("{}", dbid)));
-        });
-    }
- public void loadXmlnew(InputStream in) {
-             log.info("开始加载{}文件");
-            loadXml(in);
-
+        log.info("=====loadXml=====");
+        loadXml(fileConfig.getInputStreamForLinux(ddxmlPath.replace("{}", "1")));
     }
 
-    public static void main(String[] args) {
-        try {
-//            log.info(ResourceUtils.getURL("classpath:").getPath());//在linux下面没有用
-//            log.info(ClassUtils.getDefaultClassLoader().getResource("").getPath());
-            log.info(System.getProperty("user.dir"));
-//            String f = System.getProperty("user.dir");
-            //            File dssd = ResourceUtils.getFile("classpath:dd");
-//            if (!filemkdir.exists()) {
-//                filemkdir.mkdir();
-//            }
-//            log.info(dssd.getName());
-//            log.info(filemkdir.getName());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void loadXmlnew(InputStream in) {
+        log.info("=====in=====");
+         loadXml(in);
     }
+
 
     private List<DbInfo> loadXml(InputStream in) {
         log.info("=====开始加载【dataSource】XML=====");

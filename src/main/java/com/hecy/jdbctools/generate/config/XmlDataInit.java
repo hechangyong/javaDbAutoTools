@@ -20,6 +20,6 @@ public class XmlDataInit implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-         dataDictionaryXmlHandle.loadXml();
+//         dataDictionaryXmlHandle.loadXml();
      }
 }
