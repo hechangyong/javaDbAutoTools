@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <dataDictionary>
-  <dataSource dataSourceId="1" dataSourceZHName="stargate测试环境">
     <db dbName="stargate" dbZHName="stargate" packageName="com.hecy.jdbctools">
       <table id="ci_account" tableZHName="ci_account">
         <field name="id" description="ID" fieldZHName="ID" type="BIGINT UNSIGNED" typeTag="number" precision="[20]"/>
@@ -1069,5 +1068,4 @@
         <field name="a" description="" fieldZHName="" type="CHAR" typeTag="character" precision="[1]"/>
       </table>
     </db>
-  </dataSource>
 </dataDictionary>

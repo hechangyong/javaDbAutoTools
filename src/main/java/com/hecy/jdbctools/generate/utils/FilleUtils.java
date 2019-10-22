@@ -5,6 +5,7 @@ import org.springframework.core.io.Resource;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * @Author: hecy
@@ -15,6 +16,9 @@ public class FilleUtils {
 
 
     public static String getPathForLinux(String pathName) {
+        if (pathName == null) {
+            return null;
+        }
         Resource resource = new ClassPathResource(pathName);
         try {
             File sourceFile = resource.getFile();
@@ -28,5 +32,17 @@ public class FilleUtils {
 
         return null;
     }
+
+
+    public InputStream getInputStreamForLinux(String pathName) {
+        Resource resource = new ClassPathResource(pathName);
+        try {
+            return resource.getInputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 }

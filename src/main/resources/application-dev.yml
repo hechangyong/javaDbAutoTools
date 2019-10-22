@@ -21,3 +21,7 @@ xml:
     opXmlPath: "design\\model\\operator.xml"
 
 fileuploadPath: "upload\\"
+
+generateJavaBasePath: "D:\\mygit\\javaDbAutoTools\\tempDir"
+
+templatePath: "templates"

@@ -1,6 +1,6 @@
 package com.hecy.jdbctools.controller;
 
-import com.hecy.jdbctools.generate.enter.MainTestCase;
+import com.hecy.jdbctools.generate.enter.TempleFileHandle;
 import com.hecy.jdbctools.pojo.User;
 import com.hecy.jdbctools.server.UserServce;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class UserController {
     UserServce userServce;
 
     @Autowired
-    MainTestCase mainTestCase;
+    TempleFileHandle templeFileHandle;
     @GetMapping("/getUser")
     public User getUser() {
         List<User> user = userServce.selectUser();
@@ -34,10 +34,6 @@ public class UserController {
         userServce.insert(user2);
         userServce.deleteById(user2);
         return user1.get(0);
-    }
-    @GetMapping("/b")
-    public void b() {
-        mainTestCase.mainTestCase1();
     }
 
 

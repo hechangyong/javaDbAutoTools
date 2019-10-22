@@ -1,7 +1,7 @@
 package com.hecy.jdbctools.controller;
 
 
-import com.hecy.jdbctools.generate.enter.MainTestCase;
+import com.hecy.jdbctools.generate.enter.TempleFileHandle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class FileController {
     private static Logger log = LoggerFactory.getLogger(FileController.class);
 
     @Autowired
-    MainTestCase mainTestCase;
+    TempleFileHandle templeFileHandle;
 
     @Value("${fileuploadPath}")
     String fileuploadPath;
@@ -46,7 +46,10 @@ public class FileController {
         try {
             file.transferTo(dest);
 
-            mainTestCase.generateJavaFile(in);
+            templeFileHandle.initData(in)
+                    .generateJavaFile();
+
+
             log.info("上传成功");
             return "上传成功";
         } catch (IOException e) {
