@@ -39,7 +39,7 @@ public class TempleFileHandle {
 
     String currentXmlFileName = null;
 
-    public TempleFileHandle initData(InputStream inputStream,String currentXmlFileName) {
+    public TempleFileHandle initData(InputStream inputStream, String currentXmlFileName) {
         this.currentXmlFileName = currentXmlFileName;
         dataDictionaryXmlHandle.loadXmlnew(inputStream);
         return this;
@@ -58,37 +58,6 @@ public class TempleFileHandle {
         }
     }
 
-
-    /**
-     * 生成POJO java文件
-     */
-    public void genPojoFile() {
-        log.info("开始生成pojo java文件");
-        Template template = getTemplate("pojo_new.ftl");
-        Map dataModel = new HashMap<String, Object>(16);
-        GlobalXmlData.msrsDbInfosMapper.forEach((dbName, dbInfo) -> {
-            dataModel.put("packageName", dbInfo.getPackageName());
-            dbInfo.getSubList().forEach(tableInfo -> {
-                dataModel.put("tableModel", tableInfo);
-                OutputStreamWriter out = null;
-                try {
-                    out = new OutputStreamWriter(new FileOutputStream("D:\\mygit\\javaDbAutoTools\\tempDir\\" + StringUtils.toUpperCaseFirstOne(tableInfo.getId()) + ".java"));
-                    template.process(dataModel, out);
-                } catch (Exception e) {
-                    log.error("生成pojo文件出现异常：{}", e.getMessage());
-                } finally {
-                    try {
-                        out.flush();
-                        out.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-        });
-
-
-    }
 
     /**
      * @param templateFile
@@ -120,29 +89,6 @@ public class TempleFileHandle {
                 }
             });
         });
-    }
-
-    public void genDaoFile() {
-        log.info("开始生成dao java文件");
-        Template template = getTemplate("AbstractBaseDao_new.ftl");
-        Map dataModel = new HashMap<String, Object>(16);
-        GlobalXmlData.msrsDbInfosMapper.forEach((dbName, dbInfo) -> {
-            dataModel.put("packageName", dbInfo.getPackageName());
-            dbInfo.getSubList().forEach(tableInfo -> {
-                dataModel.put("tableModel", tableInfo);
-                OutputStreamWriter out = null;
-                try {
-
-                    out = new OutputStreamWriter(new FileOutputStream("D:\\mygit\\javaDbAutoTools\\tempDir\\dao\\Abstract" + StringUtils.toUpperCaseFirstOne(tableInfo.getId()) + "BaseDao.java"));
-                    template.process(dataModel, out);
-                    out.flush();
-                    out.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            });
-        });
-
     }
 
     /**

@@ -26,6 +26,9 @@ public class UserServce {
     public List<User> selectUser1() {
         return userDao.selectUser1();
     }
+    public  User selectById() {
+        return userDao.selectById(2L);
+    }
 
     public void insert(User user) {
         userDao.insert(user);

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
- import java.util.List;
+import java.util.List;
 
 /**
  * @Author: hecy
@@ -24,16 +24,16 @@ public class UserController {
 
     @Autowired
     TempleFileHandle templeFileHandle;
+
     @GetMapping("/getUser")
     public User getUser() {
         List<User> user = userServce.selectUser();
         System.out.printf("user: " + user);
-        List<User> user1 = userServce.selectUser1();
-        User user2 = user1.get(0);
-        user2.setUser_name("new");
-        userServce.insert(user2);
-        userServce.deleteById(user2);
-        return user1.get(0);
+        User user1 = userServce.selectById();
+        user1.setUser_name("new");
+//        userServce.insert(user2);
+//        userServce.deleteById(user2);
+        return user1;
     }
 
 

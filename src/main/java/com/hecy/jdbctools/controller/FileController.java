@@ -36,13 +36,13 @@ public class FileController {
     @Value("${fileuploadPath}")
     String fileuploadPath;
 
+    @Value("${generateJavaBasePath}")
+    String generateJavaBasePath;
+
     @GetMapping("/downloads")
     public void downloads(HttpServletRequest request, HttpServletResponse response) {
-
-        String sourceFilePath = "E:\\mygitCode\\javaDbAutoTools\\tempDir";
-
-        File sourceDir = new File(sourceFilePath);
-        File zipFile = new File(sourceFilePath + ".zip");
+        File sourceDir = new File(generateJavaBasePath);
+        File zipFile = new File(generateJavaBasePath + ".zip");
         ZipOutputStream zos = null;
         try {
             zos = new ZipOutputStream(new FileOutputStream(zipFile));
@@ -50,80 +50,34 @@ public class FileController {
             compress(sourceDir, baseDir, zos);
             download(zipFile, request, response);
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            log.error("下载文件出现异常:{}", e.getMessage(), e);
         } finally {
-            if (zos != null)
+            if (zos != null) {
                 try {
                     zos.close();
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    log.error("关闭流出现异常:{}", e.getMessage());
                 }
-        }
-    }
-
-
-    @PostMapping("/d")
-    public void d(HttpServletRequest request, HttpServletResponse response) {
-        List<File> fileList = new ArrayList<>();
-        //根目录
-        String rootPath = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession().getServletContext().getRealPath("") + "upload\\";
-        //文件地址数组
-        String path = "";
-        String[] paths = path.split(";");
-        for (String string : paths) {
-            String s = rootPath + string;
-            File f = new File(s);
-            if (!f.exists()) continue;
-            fileList.add(f);
-        }
-        if (fileList.size() <= 0) return;
-        try {
-            //保存的文件名为 当前日期 +随机数
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
-            String date = sdf.format(new Date());
-            String ran = 2 + (int) (Math.random() * (102 - 2)) + "";
-            //判断文件夹是否存在
-            File f = new File(rootPath);
-            if (!f.exists()) f.mkdirs();
-            //保存文件
-            File file = new File(rootPath + date + ran + ".rar");
-            if (!file.exists()) {
-                file.createNewFile();
             }
-            response.reset();
-            //创建文件输出流
-            FileOutputStream fous = new FileOutputStream(file);
-            /**打包的方法我们会用到ZipOutputStream这样一个输出流, 所以这里我们把输出流转换一下*/
-            ZipOutputStream zipOut = new ZipOutputStream(fous);
-            zipFile(fileList, zipOut);
-            zipOut.close();
-            fous.close();
-
-            download(file, request, response);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         }
-
     }
 
 
     public void download(File f, HttpServletRequest request, HttpServletResponse response) {
-        if (!f.exists()) return;
+        if (!f.exists()) {
+            return;
+        }
         try {
             String filename = f.getName();
             // 当文件名不是英文名的时候，最好使用url解码器去编码一下，
             filename = URLEncoder.encode(filename, "UTF-8");
             // 将响应的类型设置为图片
-            //response.setContentType("image/jpeg");
             response.setHeader("Content-Disposition", "attachment;filename=" + filename);
             // 现在通过IO流来传送数据
             InputStream input = new FileInputStream(f);
-            // getServletContext().getResourceAsStream("/testImage.jpg");
             OutputStream output = response.getOutputStream();
-            byte[] buff = new byte[1024 * 10];// 可以自己 指定缓冲区的大小
+            // 可以自己 指定缓冲区的大小
+            byte[] buff = new byte[1024 * 10];
             int len = 0;
             while ((len = input.read(buff)) > -1) {
                 output.write(buff, 0, len);
