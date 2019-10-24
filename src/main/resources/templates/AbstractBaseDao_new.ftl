@@ -1,6 +1,7 @@
 package ${packageName}.dao.basedao;
 
 import ${packageName}.pojo.${tableModel.id?cap_first};
+import ${packageName}.pojo.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
