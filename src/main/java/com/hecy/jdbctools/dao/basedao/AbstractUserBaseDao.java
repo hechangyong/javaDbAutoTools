@@ -1,7 +1,7 @@
 package com.hecy.jdbctools.dao.basedao;
 
 import com.hecy.jdbctools.pojo.User;
-import com.hecy.jdbctools.pojo.basePojo.PageList;
+import com.hecy.jdbctools.pojo.PageList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

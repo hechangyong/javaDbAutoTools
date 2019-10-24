@@ -2,8 +2,7 @@ package com.hecy.jdbctools.server;
 
 import com.hecy.jdbctools.dao.UserDao;
 import com.hecy.jdbctools.pojo.User;
-import com.hecy.jdbctools.pojo.basePojo.PageList;
-import org.hibernate.validator.constraints.LuhnCheck;
+import com.hecy.jdbctools.pojo.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

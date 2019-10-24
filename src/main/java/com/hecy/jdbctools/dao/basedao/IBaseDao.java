@@ -1,6 +1,6 @@
 package com.hecy.jdbctools.dao.basedao;
 
-import com.hecy.jdbctools.pojo.basePojo.PageList;
+import com.hecy.jdbctools.pojo.PageList;
 
 import java.util.List;
 import java.util.Map;

@@ -2,7 +2,7 @@ package com.hecy.jdbctools.controller;
 
 import com.hecy.jdbctools.generate.enter.TempleFileHandle;
 import com.hecy.jdbctools.pojo.User;
-import com.hecy.jdbctools.pojo.basePojo.PageList;
+import com.hecy.jdbctools.pojo.PageList;
 import com.hecy.jdbctools.server.UserServce;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

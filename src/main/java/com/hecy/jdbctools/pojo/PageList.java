@@ -1,4 +1,4 @@
-package com.hecy.jdbctools.pojo.basePojo;
+package com.hecy.jdbctools.pojo;
 
 /**
  * @Author: hecy
