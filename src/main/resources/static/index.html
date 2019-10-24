@@ -9,28 +9,65 @@
 <form id="form1" action="/a/upload" target="frame1" method="post" enctype="multipart/form-data">
     <input type="file" name="file">
     <input type="button" value="上传" onclick="upload()">
+    <input type="button" id="fileDowns" value="下载" style="visibility: hidden" onclick="download()">
 </form>
-<div id="bodyframe" style="visibility: hidden">
-    <iframe id="download" src="about:blank"> </iframe>
-</div>
-<iframe name="frame1" frameborder="0" height="40"></iframe>
+<iframe name="frame1" style="visibility: hidden" frameborder="0" height="40"></iframe>
 <!-- 其实我们可以把iframe标签隐藏掉 -->
 <script type="text/javascript">
-    function upload() {
+    function upload1() {
         $("#form1").submit();
-        var t = setInterval(function() {
+        var t = setInterval(function () {
             //获取iframe标签里body元素里的文字。即服务器响应过来的"上传成功"或"上传失败"
             var word = $("iframe[name='frame1']").contents().find("body").text();
             if (word != "") {
                 clearInterval(t);   //清除定时器
-
-                $("#download").attr("src", '/a/downloads');
-                $("#download").reload();
-
+                $("#fileDowns").attr("style", "");
                 alert(word);        //弹窗提示是否上传成功
             }
-        }, 10000);
+        }, 5000);
     }
+
+    function upload() {
+        $.upload({                      // 上传方法
+            url: '/a/upload',      // 上传地址
+            fileName: 'uploadfile',     // 文件域名字
+            dataType: 'text',           // 上传完成后, 返回json, text
+            onSend: function () {       // 上传之前回调,return true表示可继续上传
+                return true;
+            },
+            onSubmit: function () {
+            },
+            onComplate: function (data) {   // 上传之后回调
+                if (data != "") {
+                    alert(data);
+                    $("#fileDowns").attr("style", "");
+                } else {
+                    alert("上传图片出错！");
+                }
+            }
+        })
+    };
+
+    function download() {
+        $.ajax({
+            type: "post",
+            url: "/a/zip",
+            async: false,
+            success: function (result) {
+                if (result == "SUCCESS") {
+                    window.location.href = "/a/downloads";
+                } else {
+                    $("#msg").text(result.msg)
+                }
+            },
+            error: function (XMLHttpRequest) {
+                alert("invoke compile fail")
+            }
+        });
+
+    }
+
+
 </script>
 </body>
 </html>

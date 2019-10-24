@@ -39,8 +39,8 @@ public class FileController {
     @Value("${generateJavaBasePath}")
     String generateJavaBasePath;
 
-    @GetMapping("/downloads")
-    public void downloads(HttpServletRequest request, HttpServletResponse response) {
+    @PostMapping("/zip")
+    public String zip(HttpServletRequest request, HttpServletResponse response) {
         File sourceDir = new File(generateJavaBasePath);
         File zipFile = new File(generateJavaBasePath + ".zip");
         ZipOutputStream zos = null;
@@ -48,9 +48,11 @@ public class FileController {
             zos = new ZipOutputStream(new FileOutputStream(zipFile));
             String baseDir = "downloadfiles/";
             compress(sourceDir, baseDir, zos);
-            download(zipFile, request, response);
+            return "SUCCESS";
+//            download(zipFile, request, response);
         } catch (FileNotFoundException e) {
             log.error("下载文件出现异常:{}", e.getMessage(), e);
+            return "ERROR";
         } finally {
             if (zos != null) {
                 try {
@@ -61,12 +63,19 @@ public class FileController {
             }
         }
     }
+    @GetMapping("/s")
+    public void s(){
+        log.info("ssssss");
+    }
 
-
-    public void download(File f, HttpServletRequest request, HttpServletResponse response) {
+    @GetMapping("/downloads")
+    public void download( HttpServletRequest request, HttpServletResponse response) throws IOException {
+        File f = new File(generateJavaBasePath + ".zip");
         if (!f.exists()) {
             return;
         }
+        InputStream input = null;
+        OutputStream output = null;
         try {
             String filename = f.getName();
             // 当文件名不是英文名的时候，最好使用url解码器去编码一下，
@@ -74,20 +83,21 @@ public class FileController {
             // 将响应的类型设置为图片
             response.setHeader("Content-Disposition", "attachment;filename=" + filename);
             // 现在通过IO流来传送数据
-            InputStream input = new FileInputStream(f);
-            OutputStream output = response.getOutputStream();
+            input = new FileInputStream(f);
+            output = response.getOutputStream();
             // 可以自己 指定缓冲区的大小
             byte[] buff = new byte[1024 * 10];
             int len = 0;
             while ((len = input.read(buff)) > -1) {
                 output.write(buff, 0, len);
             }
-            // 关闭输入输出流
-            input.close();
-            output.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+        } finally {
+            // 关闭输入输出流
+            input.close();
+            output.close();
         }
 
     }
