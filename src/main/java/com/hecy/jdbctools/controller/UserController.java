@@ -2,6 +2,7 @@ package com.hecy.jdbctools.controller;
 
 import com.hecy.jdbctools.generate.enter.TempleFileHandle;
 import com.hecy.jdbctools.pojo.User;
+import com.hecy.jdbctools.pojo.basePojo.PageList;
 import com.hecy.jdbctools.server.UserServce;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +31,9 @@ public class UserController {
         List<User> user = userServce.selectUser();
         System.out.printf("user: " + user);
         User user1 = userServce.selectById();
+        PageList<User> pU = userServce.queryByPage();
         user1.setUser_name("new");
+        System.out.println(pU);
 //        userServce.insert(user2);
 //        userServce.deleteById(user2);
         return user1;

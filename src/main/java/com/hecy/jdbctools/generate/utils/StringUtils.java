@@ -12,6 +12,21 @@ import java.util.UUID;
  */
 public class StringUtils {
 
+    /**
+     * 计算一个字符在字符串中出现的次数
+     * @param s
+     * @param c
+     * @return
+     */
+    public static int counter(String s,char c){
+        int count=0;
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)==c){
+                count++;
+            }
+        }
+        return count;
+    }
 
     /**
      * 字符串转换成全小写

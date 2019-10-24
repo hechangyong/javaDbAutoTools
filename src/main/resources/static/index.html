@@ -14,7 +14,7 @@
 <iframe name="frame1" style="visibility: hidden" frameborder="0" height="40"></iframe>
 <!-- 其实我们可以把iframe标签隐藏掉 -->
 <script type="text/javascript">
-    function upload1() {
+    function upload() {
         $("#form1").submit();
         var t = setInterval(function () {
             //获取iframe标签里body元素里的文字。即服务器响应过来的"上传成功"或"上传失败"
@@ -24,29 +24,8 @@
                 $("#fileDowns").attr("style", "");
                 alert(word);        //弹窗提示是否上传成功
             }
-        }, 5000);
+        }, 2000);
     }
-
-    function upload() {
-        $.upload({                      // 上传方法
-            url: '/a/upload',      // 上传地址
-            fileName: 'uploadfile',     // 文件域名字
-            dataType: 'text',           // 上传完成后, 返回json, text
-            onSend: function () {       // 上传之前回调,return true表示可继续上传
-                return true;
-            },
-            onSubmit: function () {
-            },
-            onComplate: function (data) {   // 上传之后回调
-                if (data != "") {
-                    alert(data);
-                    $("#fileDowns").attr("style", "");
-                } else {
-                    alert("上传图片出错！");
-                }
-            }
-        })
-    };
 
     function download() {
         $.ajax({

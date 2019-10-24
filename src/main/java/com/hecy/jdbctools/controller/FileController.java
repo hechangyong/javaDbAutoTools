@@ -2,6 +2,7 @@ package com.hecy.jdbctools.controller;
 
 
 import com.hecy.jdbctools.generate.enter.TempleFileHandle;
+import com.hecy.jdbctools.generate.utils.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,10 +40,15 @@ public class FileController {
     @Value("${generateJavaBasePath}")
     String generateJavaBasePath;
 
+    private String getZipFilePath() {
+        return generateJavaBasePath + File.separator + DateUtils.getFormatString("yyyyMMdd");
+    }
+
     @PostMapping("/zip")
     public String zip(HttpServletRequest request, HttpServletResponse response) {
-        File sourceDir = new File(generateJavaBasePath);
-        File zipFile = new File(generateJavaBasePath + ".zip");
+        String zipPath = getZipFilePath();
+        File sourceDir = new File(zipPath);
+        File zipFile = new File(zipPath + ".zip");
         ZipOutputStream zos = null;
         try {
             zos = new ZipOutputStream(new FileOutputStream(zipFile));
@@ -63,14 +69,16 @@ public class FileController {
             }
         }
     }
+
     @GetMapping("/s")
-    public void s(){
+    public void s() {
         log.info("ssssss");
     }
 
     @GetMapping("/downloads")
-    public void download( HttpServletRequest request, HttpServletResponse response) throws IOException {
-        File f = new File(generateJavaBasePath + ".zip");
+    public void download(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String zipPath = getZipFilePath();
+        File f = new File(zipPath + ".zip");
         if (!f.exists()) {
             return;
         }

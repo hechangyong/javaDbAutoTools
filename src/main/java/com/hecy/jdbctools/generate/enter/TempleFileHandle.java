@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.xml.crypto.Data;
 import java.io.*;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -27,6 +29,7 @@ import static com.hecy.jdbctools.generate.utils.FilleUtils.getPathForLinux;
 public class TempleFileHandle {
     static Configuration cfg = new Configuration(new Version("2.3.23"));
     private static Logger log = LoggerFactory.getLogger(TempleFileHandle.class);
+
 
     @Autowired
     DataDictionaryXmlHandle dataDictionaryXmlHandle;
@@ -49,13 +52,72 @@ public class TempleFileHandle {
         try {
             genJavaFile("pojo_new.ftl", "pojo");
             genJavaFile("AbstractBaseDao_new.ftl", "abstractdao");
-//            genPojoFile();
-//            genDaoFile();
+            genJavaFile("Dao.ftl", "dao");
+            genJavaFile("IBaseDao.ftl", "idao");
+
+            genConfigFile("dataSourceConf.ftl", "config");
+            genPageFile("page_pojo.ftl", "pojo");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             GlobalXmlData.msrsDbInfosMapper.clear();
         }
+    }
+
+    private void genPageFile(String templateFile, String fileType) {
+        Map<String, String> dataModel = new HashMap<>(16);
+        dataModel.put("author", " auto");
+        dataModel.put("date", new Date().toString());
+        dataModel.put("pageName", "PageList");
+        try {
+            genAutoFile(templateFile, fileType, dataModel, "PageList");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TemplateException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void genConfigFile(String templateFile, String fileType) {
+        Map<String, String> dataModel = new HashMap<>(16);
+        dataModel.put("author", " auto");
+        dataModel.put("date", new Date().toString());
+        dataModel.put("connectionProperties", "${spring.datasource.connectionProperties}");
+        dataModel.put("driverClassName", "${spring.datasource.driverClassName}");
+        dataModel.put("url", "${spring.datasource.url}");
+        dataModel.put("username", "${spring.datasource.username}");
+        dataModel.put("password", "${spring.datasource.password}");
+        try {
+            genAutoFile(templateFile, fileType, dataModel, null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TemplateException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void genAutoFile(String templateFile, String fileType, Map dataModel, String tableId) throws IOException, TemplateException {
+        Template template = getTemplate(templateFile);
+        GlobalXmlData.msrsDbInfosMapper.forEach((dbName, dbInfo) -> {
+            String packageName = dbInfo.getPackageName();
+            dataModel.put("packageName", packageName);
+            OutputStreamWriter out = null;
+            try {
+                out = out = writerFile(packageName, fileType, tableId);
+                template.process(dataModel, out);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    out.flush();
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
 
