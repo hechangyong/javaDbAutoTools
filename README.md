@@ -19,3 +19,22 @@
     </db>
 </dataDictionary>
 ```
+
+#### 自动生成的代码使用说明
+ ```
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid</artifactId>
+        <version>1.1.10</version>
+    </dependency>
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.2</version>
+        <scope>provided</scope>
+    </dependency>
+ ```
