@@ -55,6 +55,8 @@ public class TempleFileHandle {
             genJavaFile("Dao.ftl", "dao");
             genJavaFile("IBaseDao.ftl", "idao");
 
+            genSqlFile("create_Sql.ftl", "sql");
+
             genConfigFile("dataSourceConf.ftl", "config");
             genPageFile("page_pojo.ftl", "pojo");
         } catch (Exception e) {
@@ -62,6 +64,19 @@ public class TempleFileHandle {
         } finally {
             GlobalXmlData.msrsDbInfosMapper.clear();
         }
+    }
+
+    private void genSqlFile(String temlateFile, String fileType) {
+        Map<String, String> dataModel = new HashMap<>(16);
+
+        try {
+            genAutoFile(temlateFile, fileType, dataModel, null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TemplateException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void genPageFile(String templateFile, String fileType) {
@@ -102,6 +117,7 @@ public class TempleFileHandle {
         GlobalXmlData.msrsDbInfosMapper.forEach((dbName, dbInfo) -> {
             String packageName = dbInfo.getPackageName();
             dataModel.put("packageName", packageName);
+            dataModel.put("tableModels", dbInfo.getSubList());
             OutputStreamWriter out = null;
             try {
                 out = out = writerFile(packageName, fileType, tableId);
@@ -190,6 +206,11 @@ public class TempleFileHandle {
             case "config": {
                 finalFilePath = baseJavaPath + "config" + File.separator;
                 finalFileName = "DataSourceConfig.java";
+                break;
+            }
+            case "sql": {
+                finalFilePath = baseJavaPath;
+                finalFileName = "db.sql";
                 break;
             }
             default:

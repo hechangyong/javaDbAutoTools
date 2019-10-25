@@ -1,7 +1,7 @@
 package com.hecy.jdbctools.generate.bean;
 
- import com.hecy.jdbctools.generate.bean.base.SubModel;
- import lombok.Data;
+import com.hecy.jdbctools.generate.bean.base.SubModel;
+import lombok.Data;
 
 /**
  * @Author: hecy
@@ -60,6 +60,26 @@ public class FieldInfo implements SubModel {
      */
     private String typeTag;
 
+
+    /**
+     * 是否是索引建 true:false
+     */
+    private String isIndexes;
+
+    /**
+     * 是否是主键 true:false
+     */
+    private String isPrimaryKey;
+
+    /**
+     * 可否可爲空 true:false
+     */
+    private String nullAble;
+
+    /**
+     * 可否自动更新 true:false
+     */
+    private String isAutoUpdate;
 
 
 }

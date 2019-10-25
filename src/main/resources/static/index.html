@@ -32,7 +32,7 @@
 		  </section>
 		<div class="related">
 		    <h3> xml样例</h3>
- 			<img src="related/1.png" width="300"  />
+ 			<img src="related/1.png" id="imgs" name="img" flag="small" onclick="bigImg()" width="300"  />
 		</div>
 	</div>
 
@@ -47,7 +47,7 @@
                 var word = $("iframe[name='frame1']").contents().find("body").text();
                 if (word != "") {
                     clearInterval(t);   //清除定时器
-                    $("#fileDowns").attr("style", "");
+                    $("#fileDowns").attr("style", "margin-left: 70px; margin-top: 30px;");
                     alert(word);        //弹窗提示是否上传成功
                 }
             }, 2000);
@@ -71,6 +71,28 @@
             });
 
         }
+
+        function bigImg() {
+            var flag =   $("#imgs").attr("flag"),//状态true为正常的状态,false为放大的状态
+                imgH,//图片的高度
+                imgW,//图片的宽度
+                img = document.getElementsByTagName('img')[0];//图片元素
+            //图片点击事件
+            imgH = img.height; //获取图片的高度
+            imgW = img.width; //获取图片的宽度
+            if(flag == "small"){
+                //图片为正常状态,设置图片宽高为现在宽高的2倍
+                $("#imgs").attr("flag","big");
+                 img.height = imgH*2;
+                img.width = imgW*2;
+            }else{
+                //图片为放大状态,设置图片宽高为现在宽高的二分之一
+                 $("#imgs").attr("flag","small");
+                img.height = imgH/2;
+                img.width = imgW/2;
+            }
+        }
+
 
 
 	</script>

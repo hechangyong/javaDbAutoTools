@@ -33,15 +33,7 @@ public abstract class Abstract${tableModel.id?cap_first}BaseDao implements IBase
 
     @Override
     public int deleteById(Long id) {
-<#if tableModel.hasLogicDelete??>
-    <#if tableModel.hasLogicDelete?? && tableModel.hasLogicDelete == "false"  >
-         String deleteSql =   "delete  from ${tableModel.id} where id =  ?";
-    <#else>
-         String deleteSql = "update ${tableModel.id} set isdelete = 1 where id = ?";
-    </#if>
-<#else>
         String deleteSql = "update ${tableModel.id} set isdelete = 1 where id = ?";
-</#if>
         int temp = jdbcTemplate.update(deleteSql, id);
         if (temp > 0) {
             log.info("删除成功！");
@@ -69,7 +61,8 @@ public abstract class Abstract${tableModel.id?cap_first}BaseDao implements IBase
 
 
     @Override
-    public int updateById(Map<String, Object> param, Long id) {
+    public int updateById(Map
+<String, Object> param, Long id) {
         StringBuffer sb = new StringBuffer();
         if (param == null || param.isEmpty()) {
             log.error("updateById param is null");
@@ -93,6 +86,7 @@ public abstract class Abstract${tableModel.id?cap_first}BaseDao implements IBase
     }
 
 
+
     /**
      * 根据条件查询结果
      *
@@ -101,17 +95,9 @@ public abstract class Abstract${tableModel.id?cap_first}BaseDao implements IBase
      */
     @Override
     public List<${tableModel.id?cap_first}> selectByCondition(String condition) {
-<#if tableModel.hasLogicDelete??>
-    <#if tableModel.hasLogicDelete?? && tableModel.hasLogicDelete == "false"  >
-         String sql = " select <#list tableModel.subList as field><#if field_index gt 0>, </#if> ${field.name} </#list> from ${tableModel.id}";
-    <#else>
-        String sql = " select <#list tableModel.subList as field><#if field_index gt 0>, </#if> ${field.name} </#list> from ${tableModel.id} where isdelete = 0";
-    </#if>
-<#else>
-        String sql = " select <#list tableModel.subList as field><#if field_index gt 0>, </#if> ${field.name} </#list> from ${tableModel.id} where isdelete = 0";
-</#if>
+        String sql = " select id, <#list tableModel.subList as field>   ${field.name}, </#list> isdelete,itime,utime from ${tableModel.id} where isdelete = 0";
         if (condition != null && !condition.isEmpty()) {
-            sql = sql + " where " + condition;
+            sql = sql + "  AND " + condition;
         }
         List<${tableModel.id?cap_first}> datas = jdbcTemplate.query(sql, new BeanPropertyRowMapper(${tableModel.id?cap_first}.class));
         if (datas.size() > 0) {
@@ -163,6 +149,9 @@ public abstract class Abstract${tableModel.id?cap_first}BaseDao implements IBase
         }
         return users;
   }
+
+
+
 
     /**
      * 查询分页（MySQL数据库）
@@ -226,15 +215,7 @@ public abstract class Abstract${tableModel.id?cap_first}BaseDao implements IBase
 
     @Override
     public User selectById(Long id) {
-<#if tableModel.hasLogicDelete??>
-    <#if tableModel.hasLogicDelete?? && tableModel.hasLogicDelete == "false"  >
-         String sql = " select * from ${tableModel.id} where id = ?";
-    <#else>
-        String sql = "select count(*) from ${tableModel.id} where  id = ? and isdelete = 0 ";
-    </#if>
-<#else>
-       String sql = "select count(*) from ${tableModel.id} where  id = ? and isdelete = 0 ";
-</#if>
+        String sql = "select id, <#list tableModel.subList as field>   ${field.name}, </#list> isdelete,itime,utime from ${tableModel.id} where  id = ? and isdelete = 0 ";
         PreparedStatementSetter preparedStatementSetter = preparedStatement -> preparedStatement.setInt(1, Integer.parseInt(id + ""));
         List<${tableModel.id?cap_first}> datas = jdbcTemplate.query(sql, preparedStatementSetter, new BeanPropertyRowMapper(User.class));
         if (datas != null && datas.size() > 0) {
@@ -245,17 +226,11 @@ public abstract class Abstract${tableModel.id?cap_first}BaseDao implements IBase
 
 
 
+
+
     @Override
     public List<${tableModel.id?cap_first}> selectAll() {
-<#if tableModel.hasLogicDelete??>
-    <#if tableModel.hasLogicDelete?? && tableModel.hasLogicDelete == "false"  >
-         String sql = " select * from ${tableModel.id}  ";
-    <#else>
-        String sql = "select count(*) from ${tableModel.id} where   isdelete = 0 ";
-    </#if>
-<#else>
-       String sql = "select count(*) from ${tableModel.id} where  isdelete = 0 ";
-</#if>
+        String sql = " select id, <#list tableModel.subList as field>   ${field.name}, </#list> isdelete,itime,utime from ${tableModel.id}  ";
         List<${tableModel.id?cap_first}> users = null;
         try {
             users = jdbcTemplate.query(sql, new BeanPropertyRowMapper(${tableModel.id?cap_first}.class));

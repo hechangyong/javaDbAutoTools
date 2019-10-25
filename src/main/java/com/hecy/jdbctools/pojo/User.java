@@ -10,7 +10,45 @@ import java.util.Date;
 public class User {
 
 
-    private Integer id;
+    private Long id;
+
+    private Date utime;
+
+    private Date itime;
+
+    private boolean isdelete;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getUtime() {
+        return utime;
+    }
+
+    public void setUtime(Date utime) {
+        this.utime = utime;
+    }
+
+    public Date getItime() {
+        return itime;
+    }
+
+    public void setItime(Date itime) {
+        this.itime = itime;
+    }
+
+    public boolean isIsdelete() {
+        return isdelete;
+    }
+
+    public void setIsdelete(boolean isdelete) {
+        this.isdelete = isdelete;
+    }
 
     private String user_name;
 
@@ -19,13 +57,7 @@ public class User {
 
      private Integer age;
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getUser_name() {
         return user_name;
