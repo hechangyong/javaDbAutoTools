@@ -21,6 +21,7 @@
 ```
 
 #### 自动生成的代码使用说明
+- POM文件中需要自主添加以下依赖
  ```
     <dependency>
         <groupId>com.alibaba</groupId>
@@ -38,3 +39,15 @@
         <scope>provided</scope>
     </dependency>
  ```
+- 项目中的application.yml 中需要配置如下数据库配置
+```
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://******:3306/dbtools?serverTimezone=GMT%2B8
+    username: dbadmin
+    password: dbadmin
+
+
+```
+
